@@ -35,32 +35,6 @@ a:hover, a:focus {
   background-color: #f2f2f2 !important;
 }
 
-#branding {
-  display: none;
-}
-#branding img {
-  margin-left: 0.625rem;
-}
-#branding .logo-wrap {
-  width: 293px;
-}
-@media only screen and (min-width: 48.063em) {
-  #branding {
-	padding-top: 10px;
-    display: block;
-    width: 100%;
-    margin: 0 auto;
-    max-width: 75rem;
-  }
-  #branding:before, #branding:after {
-    content: " ";
-    display: table;
-  }
-  #branding:after {
-    clear: both;
-  }
-}
-
 .top-bar {
   background-color: #fff !important;
   border-top: none;
@@ -78,6 +52,7 @@ a:hover, a:focus {
 .ask {
   display: none;
 }
+
 @media only screen and (min-width: 48.063em) {
   .ask {
     display: block;
@@ -103,6 +78,7 @@ a:hover, a:focus {
     font-size: 2rem;
   }
 }
+
 header {
   background: #0A0F15;
   background-image: url("https://libraries.psu.edu/sites/all/themes/custom/f5/images/ul/header_bg.jpg");
@@ -132,74 +108,21 @@ header {
 .l-header:after {
   clear: both;
 }
-@media only screen and (max-width: 48em) {
-  #main-menu a {
-    position: relative;
-  }
-  #main-menu a:before {
-    content: "";
-    font-family: 'FontAwesome';
-    padding-right: 0.5em;
-  }
-}
-@media only screen and (min-width: 48.063em) {
-  #main-menu {
-    padding-left: 0;
-    padding-right: 0;
-    width: 100%;
-    float: left;
-  }
-  #main-menu li {
-    padding-left: 0;
-    padding-right: 0;
-    width: 25%;
-    float: left;
-  }
-  #main-menu li a {
-    text-align: center;
-    font-family: "Montserrat", sans-serif;
-    text-transform: uppercase;
-    background-color: #356ed7;
-    color: #fff;
-  }
-}
-@media only screen and (min-width: 48.063em) and (min-width: 64.063em) {
-  #main-menu li a {
-    font-size: 1rem;
-  }
-}
-@media only screen and (min-width: 48.063em) {
-  #main-menu li a:hover {
-    background-color: #173887;
-    text-decoration: none;
-  }
-  #main-menu .dropdown .leaf {
-    display: list-item;
-    float: none;
-    width: auto;
-  }
-  #main-menu .dropdown .leaf a {
-    text-align: left;
-    text-transform: none;
-  }
-}
+
+
 .title-area {
   border-bottom: 1px solid #235d9d;
 }
 .title-area a:hover {
   text-decoration: none;
 }
+
 @media (min-width: 768px) {
   .navbar-nav {
     float: none;
     margin-left: auto;
     margin-right: auto;
     max-width: 75em;
-  }
-  .navbar-default {
-    border: none;
-    background-color: transparent;
-    /*	margin-bottom: 0;*/
   }
 }
 
@@ -211,6 +134,14 @@ header {
   border-radius: 0;
   margin-bottom: 0;
   padding: .5rem 1rem;
+}
+
+.navbar-default {
+  background-color: #fff;
+}
+
+.navbar-toggle {
+  float: left;
 }
 
 .navbar + .container {
@@ -235,11 +166,10 @@ header {
 }
 
 .navbar-brand a img {
-  max-height: 50px;
+  display: none;
 }
 
 .site-title {
-  border-left: 1px solid #fff;
   color: #fff;
   font-family: roboto_slabregular, Georgia, sans-serif;
   font-size: 25px;
@@ -250,6 +180,30 @@ header {
 .site-title:hover {
   color: #fff;
   text-decoration: none;
+}
+
+.search > h3 {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .navbar-brand a img {
+    display: inline;
+    max-height: 50px;
+  }
+
+  .site-title {
+    border-left: 1px solid #fff;
+  }
+}
+
+.search {
+  padding: 1rem;
+  border: 1px dotted #ccc;
+}
+
+.breadcrumb>li+li:before {
+  content: "\007C\00a0" !important;
 }
 
 .row {
@@ -326,14 +280,9 @@ h1, .h1, h2, h3, h4, h5, h6 {
 .btn-primary:hover {
   background-color: #173887;
 }
-/*
- .btn-primary:focus, .btn-primary.focus {
-      background-color: #356ed7;
-}
-*/
+
 #content {
   background-color: #ffffff;
-  width: 75rem;
   margin-left: auto;
   margin-right: auto;
 }
