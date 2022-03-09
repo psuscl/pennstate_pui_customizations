@@ -1,10 +1,13 @@
-<section id="header">
-  <div class="header-row">
-    <header class="header">
+<section id="header" class="navbar navbar-expand-md navbar-dark bg-dark">
+  <div class="container">
+    <div class="navbar-brand col-xs-12">
       <a href="#content" accesskey="S" onclick="$('#content').focus();" class="offscreen">Skip to Main Content</a>
-      <div id="branding" role="banner">
-        <a class="psuwordmark" href="/"><h1>Penn State University Libraries</h1></a>
-      </div>
-    </header>
+      <a title="The Pennsylvania State University Libraries" href="https://libraries.psu.edu">
+        <img class="img-fluid" alt="Penn State University Libraries logo" src="<%= asset_url(AppConfig[:pui_branding_img]) %>" />
+      </a>
+      <a class="site-title" href="/">
+        <%= t('brand.title') %>
+        </a>
+    </div>
   </div>
 </section>

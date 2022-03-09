@@ -1,17 +1,15 @@
 html, body {
-  height: 100%;
   font-size: 100%;
 }
+
 *, *:before, *:after {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
 body {
-  background: #fafafa !important;
-  color: #000;
-  padding: 0;
-  margin: 0;
+  height: 100% !important;
   font-family: "Lato", sans-serif;
   font-weight: normal;
   font-style: normal;
@@ -28,6 +26,15 @@ a:hover {
 a:hover, a:focus {
   color: #1585cf;
 }
+
+.bg-dark {
+  background-color: #1f427c !important;
+}
+
+.bg-light {
+  background-color: #f2f2f2 !important;
+}
+
 #branding {
   display: none;
 }
@@ -36,14 +43,6 @@ a:hover, a:focus {
 }
 #branding .logo-wrap {
   width: 293px;
-}
-#branding .psuwordmark {
-  background-image: url(https://libraries.psu.edu/sites/all/themes/custom/f5_psul/images/ul/psul_mark_header.png);
-  display: block;
-  float: left;
-  width: 293px;
-  height: 77px;
-  text-indent: -9999px;
 }
 @media only screen and (min-width: 48.063em) {
   #branding {
@@ -203,10 +202,54 @@ header {
     /*	margin-bottom: 0;*/
   }
 }
-.header-row {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 75em;
+
+.navbar {
+  min-height: inherit;
+  display: block;
+  position: relative;
+  border: none;
+  border-radius: 0;
+  margin-bottom: 0;
+  padding: .5rem 1rem;
+}
+
+.navbar + .container {
+  padding-top: .5rem !important;
+  padding-bottom: .5rem !important;
+}
+
+.navbar-brand {
+  float: none;
+  display: inline;
+  padding: 0;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  line-height: inherit;
+  white-space: nowrap;
+}
+
+.navbar-brand a {
+  display: inline-block;
+  max-width: 50%;
+  vertical-align: middle;
+}
+
+.navbar-brand a img {
+  max-height: 50px;
+}
+
+.site-title {
+  border-left: 1px solid #fff;
+  color: #fff;
+  font-family: roboto_slabregular, Georgia, sans-serif;
+  font-size: 25px;
+  margin-left: 10px;
+  padding-left: 1rem;
+}
+
+.site-title:hover {
+  color: #fff;
+  text-decoration: none;
 }
 
 .row {
@@ -215,7 +258,6 @@ header {
   margin-right: auto;
   margin-top: 0;
   margin-bottom: 0;
-  max-width: 75rem;
 }
 .row:before, .row:after {
   content: " ";
@@ -420,14 +462,6 @@ footer i {
 }
 .footer__meta h2, .footer__social h2 {
   margin-top: 0px;
-}
-.row {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  max-width: 75rem;
 }
 .row:before, .row:after {
   content: " ";
