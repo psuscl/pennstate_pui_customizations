@@ -50,11 +50,8 @@ a:hover, a:focus {
 	padding-top: 10px;
     display: block;
     width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 0;
+    margin: 0 auto;
     max-width: 75rem;
-    margin-bottom: 20px;
   }
   #branding:before, #branding:after {
     content: " ";
@@ -64,11 +61,13 @@ a:hover, a:focus {
     clear: both;
   }
 }
-/* Wrapped around .top-bar to contain to grid width */
-.contain-to-grid {
-  width: 100%;
-  background: #2c76c7;
+
+.top-bar {
+  background-color: #fff !important;
+  border-top: none;
+  border-bottom: none;
 }
+
 .fixed {
   width: 100%;
   left: 0;
