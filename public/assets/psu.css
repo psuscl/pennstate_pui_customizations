@@ -65,6 +65,11 @@ a:hover, a:focus {
   }
 }
 
+.search_row .form-group {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 .top-bar {
   background-color: #fff !important;
   border-top: none;
@@ -316,15 +321,14 @@ h1, .h1, h2, h3, h4, h5, h6 {
   margin-left: auto;
   margin-right: auto;
 }
+
 #main-content {
-  background-color: #ffffff;
-}
-#main-content {
-  max-width: 75rem;
+  background-color: #fff;
   width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
+
 .navbar-collapse {
   max-width: 75rem;
   width: 100%;
