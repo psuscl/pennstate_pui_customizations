@@ -1,3 +1,14 @@
+<% if AppConfig[:display_announcement] %>
+  <section id="announcement" class="announcement container-fluid bg-warning">
+    <div class="row align-items-center">
+      <div class="col-xs-12">
+        <p class="text-center text-announcement">
+          <i class="fa fa-bullhorn"></i> <%= t('brand.announcement').html_safe %>
+        </p>
+      </div>
+    </div>
+  </section>
+<% end %>
 <section id="header" class="navbar navbar-expand-md navbar-dark bg-dark">
   <div class="container">
     <div class="navbar-brand col-xs-12">
