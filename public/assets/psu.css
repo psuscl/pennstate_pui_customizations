@@ -35,6 +35,36 @@ a:hover, a:focus {
   background-color: #f2f2f2 !important;
 }
 
+.bg-warning {
+  background-color: #ffc107 !important;
+}
+
+.announcement {
+  border-bottom: 3px solid #6c757d;
+}
+
+.announcement a {
+  color: #000;
+  text-decoration: underline;
+}
+
+/* this isn't awesome but it will do until ArchivesSpace runs Bootstrap 4 and
+   I can use align-items */
+.text-announcement {
+  margin-bottom: 0;
+  padding: 10px 0;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+@media (max-width: 767.98px) {
+  .announcement {
+    display: none;
+  }
+}
+
 .top-bar {
   background-color: #fff !important;
   border-top: none;
