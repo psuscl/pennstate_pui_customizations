@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-2 form-group">
           <%= label_tag(:"field0", t('search-field'),:class => 'sr-only') %>
-          <%= select_tag('field[]', options_for_select(field_options, @search[:field][0]), :id=> "field0", :class=> 'form-control') %>
+          <%= select_tag('field[]', options_for_select(field_options, @search[:field][0]), :id=> "field0", :class=> 'custom-select form-control') %>
         </div>
         <div class="col-sm-8 form-group">
           <%= label_tag(:"q0", t('navbar.search_placeholder'),:class => 'sr-only') %>
@@ -19,7 +19,7 @@
         </div>
         <div class="col-sm-2 form-group" id="submit_div">
           <button id="submit_search" class="btn btn-primary" type="submit" name="commit" data-disable-with="Search">
-            <i class="fa fa-search"> </i> Search
+            <%= t('actions.search') %>
           </button>
         </div>
       </div>
