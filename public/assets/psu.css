@@ -10,7 +10,7 @@ html, body {
 
 body {
   height: 100% !important;
-  font-family: "Lato", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-weight: normal;
   font-style: normal;
   line-height: 1.5;
@@ -266,11 +266,13 @@ header {
 }
 
 h1, .h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
+  font-family: roboto_slabregular, Georgia, sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #222222;
+  margin-top: 0;
 }
+
 .record-type-badge {
   font-family: "Montserrat", sans-serif;
 }
