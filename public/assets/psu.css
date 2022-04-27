@@ -65,6 +65,10 @@ a:hover, a:focus {
   }
 }
 
+.container {
+  padding: 0;
+}
+
 .search_row .form-group {
   padding-left: 0;
   padding-right: 0;
@@ -304,6 +308,10 @@ h1, .h1, h2, h3, h4, h5, h6 {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+
+#main-content.accessions, #main-content.objects {
+  padding: 0;
 }
 
 .navbar-collapse {
