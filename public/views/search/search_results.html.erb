@@ -50,10 +50,6 @@
     </div>
   <% end %>
 
-  <% if defined?(@results) %>
-  <h2><%= t('search_results.results_head', {:type => results_type, :start => @results['offset_first'],
-         :end => @results['offset_last'], :total => @results['total_hits'] })  %></h2>
-  <% end %>
   <% end %>
   </div>
 </div>
@@ -66,10 +62,9 @@
   </div>
   <div class="col-sm-9">
     <a name="main" title="<%= t('internal_links.main') %>"></a>
-    <div class="row">
-      <div class="col-sm-8">
-        <%= render partial: 'shared/pagination', locals: {:pager  => @pager}  %>
-      </div>
+    <div class="row results-head">
+      <%= render partial: 'shared/results_head', locals: {:pager => @pager, :results => @results} %>
+
       <%= render partial: 'shared/sorter' %>
     </div>
 
@@ -82,7 +77,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-12">
         <%= render partial: 'shared/pagination', locals: {:pager  => @pager, :pager_id => 'paging_bottom'}  %>
       </div>
     </div>
