@@ -22,7 +22,7 @@
     </div>
   </div>
 </section>
-<% unless controller_name == 'search' %>
+<% if controller_name == 'welcome' %>
   <section id="simple_search" class="navbar-search navbar navbar-expand-md navbar-light bg-light">
     <div class="container">
       <%= render partial: 'shared/simple_search', locals: {

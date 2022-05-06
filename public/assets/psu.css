@@ -242,6 +242,15 @@ header {
   border: 1px dotted #ccc;
 }
 
+.filter_more {
+  margin-bottom: 20px;
+}
+
+.recordrow {
+  border: none;
+  border-bottom: 1px dotted #dee2e6;
+}
+
 .breadcrumb>li+li:before {
   content: "\007C\00a0" !important;
 }
