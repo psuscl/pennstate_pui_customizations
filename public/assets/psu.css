@@ -334,8 +334,6 @@ h1, .h1, h2, h3, h4, h5, h6 {
 .navbar-collapse {
   max-width: 75rem;
   width: 100%;
-  margin-left: auto !important;
-  margin-right: auto !important;
   background: #fff !important;
   border-top: none !important;
   border-bottom: none !important;
