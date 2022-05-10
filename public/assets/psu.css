@@ -301,12 +301,43 @@ h1, .h1, h2, h3, h4, h5, h6 {
   padding-right: 0;
   padding-left: 0;
 }
+
+.tabbing.nav-pills {
+  display: table;
+  width: 100%;
+  border-top: 1px solid #e2e2e2;
+  border-bottom: 3px solid #e2e2e2;
+}
+
+.tabbing.nav-pills li {
+  display: table-cell;
+}
+
+.nav-pills > li {
+  float: none;
+}
+
+.tabbing.nav-pills a {
+  display: block;
+}
+
 .tabbing.nav-pills > li > a {
-  background-color: #2c76c7;
+  background-color: #f5f5f5;
+  margin: 0;
+  color: #2668af;
+  font-weight: bold;
 }
+
 .tabbing.nav-pills > li > a.active {
-  background-color: #173887;
+  color: #2888af;
+  background-color: #fff;
 }
+
+.tabbing.nav-pills > li:first-child a,
+.tabbing.nav-pills > li:last-child a {
+  border-radius: 0;
+}
+
 .btn-primary {
   background-color: #2c76c7;
 }
