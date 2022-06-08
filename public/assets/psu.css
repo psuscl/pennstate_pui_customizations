@@ -149,6 +149,10 @@ header {
   clear: both;
 }
 
+.search-results {
+  padding-bottom: .5rem !important;
+  padding-top: .5rem !important;
+}
 
 .title-area {
   border-bottom: 1px solid #235d9d;
@@ -181,7 +185,17 @@ header {
 }
 
 .navbar-toggle {
-  float: left;
+  border: 1px solid #fff;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .navbar-toggle {
+    display: none;
+  }
 }
 
 .navbar + .container {
@@ -194,15 +208,34 @@ header {
   display: inline;
   padding: 0;
   margin-right: 1rem;
-  font-size: 1.25rem;
+  font-size: 1rem;
   line-height: inherit;
   white-space: nowrap;
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+  background-color: inherit;
+}
+
+.navbar-nav > li > a {
+  color: hsla(0,0%,100%,.5)
+}
+
+.navbar-nav > li > a:hover {
+  color: hsla(0,0%,100%,.75)
 }
 
 .navbar-brand a {
   display: inline-block;
   max-width: 50%;
   vertical-align: middle;
+}
+
+.navbar-brand a:hover,
+.navbar-brand a:focus {
+  color: #fff;
+  text-decoration: none;
 }
 
 .navbar-brand a img {
@@ -242,8 +275,57 @@ header {
   border: 1px dotted #ccc;
 }
 
+.search.sidebar {
+  margin-bottom: 1rem;
+}
+
 .filter_more {
   margin-bottom: 20px;
+}
+
+.dl-horizontal {
+  font-size: .8rem;
+}
+
+.glyphicon {
+  font-size: .8rem;
+}
+
+.infinite-item dl.dl-horizontal dt {
+  line-height: inherit;
+}
+
+.largetree-container {
+  background-color: #fff;
+}
+
+.largetree-node {
+  font-size: .8rem;
+}
+
+.largetree-node.indent-level-1 {
+  font-size: 1rem;
+}
+
+.largetree-container .table-cell {
+  white-space: inherit;
+}
+
+.largetree-container .table.root div.table-row:first-child {
+  background-color: #fff;
+  font-weight: bold;
+}
+
+.indent-level-1 .table-cell { padding-left: 20px; }
+.indent-level-2 .table-cell { padding-left: 40px; }
+.indent-level-3 .table-cell { padding-left: 60px; }
+.indent-level-4 .table-cell { padding-left: 80px; }
+.indent-level-5 .table-cell { padding-left: 100px; }
+.table-cell > button { margin-left: -20px; }
+/* DU might have indent levels > 5 but I'm sure we don't... */
+
+.breadcrumb {
+  background-color: #fff;
 }
 
 .recordrow {
@@ -302,6 +384,11 @@ h1, .h1, h2, h3, h4, h5, h6 {
   padding-left: 0;
 }
 
+.navbar.tabbing {
+  padding: 0;
+  margin-bottom: 1rem;
+}
+
 .tabbing.nav-pills {
   display: table;
   width: 100%;
@@ -349,6 +436,8 @@ h1, .h1, h2, h3, h4, h5, h6 {
   background-color: #ffffff;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: .5rem !important;
+  padding-top: .5rem !important;
 }
 
 #main-content {
@@ -362,10 +451,18 @@ h1, .h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+#sidebar {
+  border: none;
+  padding: 0;
+}
+
+.sidebar > .search {
+  margin-bottom: 1rem;
+}
+
 .navbar-collapse {
   max-width: 75rem;
   width: 100%;
-  background: #fff !important;
   border-top: none !important;
   border-bottom: none !important;
 }
