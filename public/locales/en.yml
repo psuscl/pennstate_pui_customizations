@@ -2,6 +2,8 @@ en:
   brand:
     announcement: >
       For the latest COVID-19 news and information, visit Penn State's <a href="https://virusinfo.psu.edu/">Coronavirus Information website</a>.
+  actions:
+    hierarch: Review and Request Materials
   search_results:
     results_head: "<strong>%{start} - %{end}</strong> of <strong>%{total}</strong>"
     one_entry: "<strong>%{total}</strong> entry found"
