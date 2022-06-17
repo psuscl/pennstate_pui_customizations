@@ -1,0 +1,32 @@
+<%= javascript_include_tag 'largetree' %>
+<%= javascript_include_tag 'tree_renderer' %>
+
+<h2><%= heading_text %></h2>
+<div class="infinite-tree-view largetree-container" id='tree-container'></div>
+
+<script>
+    var root_uri = '<%= app_prefix(root_node_uri) %>';
+    var should_link_to_record = true;
+
+    let simpleRendererOverride = new SimpleRenderer(should_link_to_record);
+    simpleRendererOverride.nodeTemplate = $('<div class="table-row"> ' +
+                              '  <div class="table-cell drag-handle"></div>' +
+                              '  <div class="table-cell title"><button class="expandme" aria-expanded="false"><i class="expandme-icon glyphicon glyphicon-chevron-right" /></button></div>' +
+                              '</div>');
+
+    var tree = new LargeTree(new TreeDataSource(root_uri + '/tree'),
+        $('#tree-container'),
+        root_uri,
+        true,
+        simpleRendererOverride,
+        function() {
+          var tree_id = TreeIds.uri_to_tree_id('<%= current_node_uri %>');
+          tree.setCurrentNode(tree_id, function() {
+            // scroll to selected node
+            tree.elt.scrollTo('#'+tree_id, 0, {offset: -50});
+          });
+        },
+        function(current_node, tree) {
+          tree.expandNode(current_node);
+        });
+</script>
