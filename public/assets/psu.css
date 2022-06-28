@@ -126,47 +126,37 @@ header {
   background-position: 50% 0;
   background-size: 1444px auto;
 }
-/*  @media only screen and (min-width: 90.063em) {
-    header {
-      background-size: 100% 100%; } }
-  @media only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min--moz-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2 / 1), only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
-    header {
-      background-image: url("https://libraries.psu.edu/sites/all/themes/custom/f5/images/ul/header_bg_retina.jpg"); } }
-*/
-.l-header {
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  max-width: 75rem;
-}
-.l-header:before, .l-header:after {
-  content: " ";
-  display: table;
-}
-.l-header:after {
-  clear: both;
-}
 
 .search-results {
   padding-bottom: .5rem !important;
   padding-top: .5rem !important;
 }
 
-.title-area {
-  border-bottom: 1px solid #235d9d;
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
 }
-.title-area a:hover {
-  text-decoration: none;
+
+.navbar-nav .nav-item {
+  font-size: 0.75rem;
+}
+
+@media (max-width: 767.98px) {
+  .list-inline .nav-item {
+    font-size: 0.75rem;
+  }
 }
 
 @media (min-width: 768px) {
   .navbar-nav {
-    float: none;
+    float: right;
     margin-left: auto;
     margin-right: auto;
     max-width: 75em;
+  }
+
+  .navbar-nav .nav-item {
+    font-size: 1rem;
   }
 }
 
@@ -184,20 +174,6 @@ header {
   background-color: #fff;
 }
 
-.navbar-toggle {
-  border: 1px solid #fff;
-}
-
-.navbar-toggle .icon-bar {
-  background-color: #fff;
-}
-
-@media (min-width: 1024px) {
-  .navbar-toggle {
-    display: none;
-  }
-}
-
 .navbar + .container {
   padding-top: .5rem !important;
   padding-bottom: .5rem !important;
@@ -213,16 +189,20 @@ header {
   white-space: nowrap;
 }
 
-.nav > li > a:hover,
-.nav > li > a:focus {
+.navbar-nav .nav-item {
+  text-align: center;
+}
+
+.navbar-nav .nav-item > a:hover,
+.navbar-nav .nav-item > a:focus {
   background-color: inherit;
 }
 
-.navbar-nav > li > a {
+.navbar-nav .nav-item > a {
   color: hsla(0,0%,100%,.5)
 }
 
-.navbar-nav > li > a:hover {
+.navbar-nav .nav-item > a:hover {
   color: hsla(0,0%,100%,.75)
 }
 
