@@ -6,4 +6,4 @@ unless AppConfig.has_key? :display_announcement
   AppConfig[:display_announcement] = true
 end
 
-AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'digital_objects', 'subjects', 'agents', 'classifications']
+AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'objects', 'subjects', 'agents', 'classifications']
