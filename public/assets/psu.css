@@ -119,14 +119,6 @@ a:hover, a:focus {
   }
 }
 
-header {
-  background: #0A0F15;
-  background-image: url("https://libraries.psu.edu/sites/all/themes/custom/f5/images/ul/header_bg.jpg");
-  background-repeat: no-repeat;
-  background-position: 50% 0;
-  background-size: 1444px auto;
-}
-
 .search-results {
   padding-bottom: .5rem !important;
   padding-top: .5rem !important;
@@ -348,7 +340,7 @@ header {
   margin-top: 0;
 }
 
-h1, .h1, h2, h3, h4, h5, h6 {
+h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-family: roboto_slabregular, Georgia, sans-serif;
   font-weight: 700;
   font-style: normal;
