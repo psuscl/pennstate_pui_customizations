@@ -7,3 +7,6 @@ en:
   search_results:
     results_head: "<strong>%{start} - %{end}</strong> of <strong>%{total}</strong>"
     one_entry: "<strong>%{total}</strong> entry found"
+  messages:
+    content_warning: "Penn State’s archival and digital collections may include harmful or offensive content and/or language. Some of the images and documents included in our collections reflect outdated, biased, offensive, and possibly disturbing views and opinions. Researchers should be aware that they may engage with potentially disturbing content. Work to address harmful content is ongoing. Potentially offensive and harmful imagery cannot be redacted or obscured at this time."
+    content_warning_label: Content Notice
