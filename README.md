@@ -4,6 +4,11 @@ Customizations to the [Penn State University Libraries ArchivesSpace public user
 
 ## Changelog
 
+**20221019**
+
+* added a content warning that appears when a user browses to the site for the first time
+  * it then stores a browser cookie indicating you've seen it, and it won't pop up again for seven days
+
 **20220608**
 
 Two streams of changes here:
