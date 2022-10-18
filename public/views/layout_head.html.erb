@@ -21,12 +21,12 @@
 <!-- display a content note on first load -->
 <script type="text/javascript">
   $(document).ready(function() {
-    if(!sessionStorage.getItem('hideContentWarning')) { 
+    if(!(Cookies.get('as_pui_hideContentWarning'))) {
       $('#content-warning-modal').modal('show');
     }
 
     $('#content-warning-modal button').click(function() {
-      sessionStorage.setItem('hideContentWarning', true);
+      Cookies.set('as_pui_hideContentWarning', true, { expires: 7 });
     });
   });
 </script>
