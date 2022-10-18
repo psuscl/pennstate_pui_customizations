@@ -17,12 +17,15 @@ body {
   position: relative;
   cursor: auto;
 }
+
 a {
   color: #2668af;
 }
+
 a:hover {
   cursor: pointer;
 }
+
 a:hover, a:focus {
   color: #1585cf;
 }
@@ -133,6 +136,12 @@ a:hover, a:focus {
   font-size: 0.75rem;
 }
 
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: inherit;
+}
+
 @media (max-width: 767.98px) {
   .list-inline .nav-item {
     font-size: 0.75rem;
@@ -190,12 +199,20 @@ a:hover, a:focus {
   background-color: inherit;
 }
 
-.navbar-nav .nav-item > a {
+.navbar-nav .nav-item .nav-link {
   color: hsla(0,0%,100%,.5)
 }
 
-.navbar-nav .nav-item > a:hover {
+.dropdown-menu .nav-item .nav-link {
+  color: #00171f;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
   color: hsla(0,0%,100%,.75)
+}
+
+.dropdown-menu .nav-item .nav-link:hover {
+  color: rgb(0, 23, 31, 0.75);
 }
 
 .navbar-brand a {
@@ -225,6 +242,11 @@ a:hover, a:focus {
 .site-title:hover {
   color: #fff;
   text-decoration: none;
+}
+
+
+.welcome-text {
+  margin-bottom: 0.5rem;
 }
 
 .search > h3 {
@@ -346,6 +368,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-style: normal;
   color: #222222;
   margin-top: 0;
+}
+
+h1 {
+  font-size: 2rem;
 }
 
 .record-type-badge {
