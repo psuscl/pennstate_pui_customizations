@@ -17,23 +17,34 @@
         <img class="img-fluid" alt="Penn State University Libraries logo" src="<%= asset_url(AppConfig[:pui_branding_img]) %>" />
       </a>
       <a class="site-title" href="/">
-        <%= t('brand.title') %>
+        <%= t('brand.header_title') %>
       </a>
     </div>
     <ul class="navbar-nav nav">
-      <%# TODO: add class="active" if we're on that page %>
-      <% $MAIN_MENU.each do |link| %>
-        <li class="nav-item">
-          <% if ['plugins/request_list'].include?(link[0]) %>
-            <a id="request_list_menu_item" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
-          <% else %>
-            <a href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
+      <li class="dropdown nav-item">
+        <a class="dropdown-toggle submenu nav-link" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" tabindex="0">
+          <span>Browse</span>
+          <i class="fa fa-caret-down fa-icon"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <% $MAIN_MENU.each do |link| %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
+            </li>
           <% end %>
+        </ul>
+      </li>
+      <% if AppConfig[:plugins].include?('request_list') %>
+        <li class="nav-item">
+          <a class="nav-link" id="request_list_menu_item" href="/plugin/request_list/pennstate"><%= t('plugin.request_list.menu_label') %></a>
         </li>
       <% end %>
+      <li class="nav-item">
+        <a class="nav-link" href="https://aeon.libraries.psu.edu">My Account</a>
+      </li>
       <% unless AppConfig[:pui_hide][:search_tab] %>
         <li class="nav-item">
-          <a href="<%=  app_prefix('/search?reset=true') %>" title="<%= I18n.t('search_tab', :target => t('archive._plural'))%>">
+          <a class="nav-link" href="<%=  app_prefix('/search?reset=true') %>" title="<%= I18n.t('search_tab', :target => t('archive._plural'))%>">
             <span class="fa fa-search" aria-hidden="true"></span>
             <span class="sr-only"><%= I18n.t('search_tab', :target => t('archive._plural')) %></span>
           </a>

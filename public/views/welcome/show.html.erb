@@ -1,15 +1,18 @@
 <div class="row">
-  <div class="col-sm-12">
+  <div class="col-sm-12 welcome-text">
     <h1><%= t('brand.welcome_head') %></h1>
   </div>
 </div>
 
 <div class="row">
-  <div class="col-sm-12">
-    <div><%= t('brand.welcome_message').html_safe %></div>
+  <div class="col-sm-4">
+    <%= render 'shared/about' %>
   </div>
-  <div class="col-sm-12">
-    <div class="welcome_about"><%= render "shared/about" %></div>
+  <div class="col-sm-4">
+    <%= render 'shared/research' %>
+  </div>
+  <div class="col-sm-4">
+    <%= render 'shared/find_more' %>
   </div>
 </div>
 
