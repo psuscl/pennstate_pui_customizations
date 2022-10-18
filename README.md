@@ -2,6 +2,10 @@
 
 Customizations to the [Penn State University Libraries ArchivesSpace public user interface](https://aspace.libraries.psu.edu).
 
+## Dependencies
+
+This plugin uses [JavaScript Cookie](https://github.com/js-cookie/js-cookie) to set a browser cookie indicating whether a user has seen our content warning/notice or not. It's not installed here because we also use it in [Request List](https://github.com/psuscl/request_list). If we ever use something besides the Harvard plugin for Aeon integration, someone will need to include js-cookie here. 
+
 ## Changelog
 
 **20221019**
