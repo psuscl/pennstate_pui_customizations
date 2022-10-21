@@ -40,3 +40,6 @@ function updateRequestNumber() {
 		$("#request_list_menu_item").find("span").text($("#request_list_menu_item").find("span").text(requestNumber));
 	}
 }
+
+// Bootstrap 3 tooltips
+$(function() { $("[data-toggle='tooltip']").tooltip(); });
