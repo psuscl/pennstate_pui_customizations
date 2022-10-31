@@ -37,7 +37,7 @@ $(window).on('load', function() {
 function updateRequestNumber() {
 	if (window.request_list != null) {
 		var requestNumber = window.request_list.getList().length;
-		$("#request_list_menu_item").find("span").text($("#request_list_menu_item").find("span").text(requestNumber));
+		$("#rl-badge-count").text(requestNumber);
 	}
 }
 

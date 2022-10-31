@@ -38,7 +38,9 @@
       </li>
       <% if AppConfig[:plugins].include?('request_list') %>
         <li class="nav-item">
-          <a class="nav-link" id="request_list_menu_item" href="/plugin/request_list/pennstate"><%= t('plugin.request_list.menu_label') %></a>
+          <a class="nav-link" id="request_list_menu_item" href="/plugin/request_list/pennstate"><%= t('plugin.request_list.menu_label') %>
+            <span class="badge" id="rl-badge-count"></span>
+          </a>
         </li>
       <% end %>
       <li class="nav-item">
