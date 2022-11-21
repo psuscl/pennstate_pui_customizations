@@ -3,7 +3,7 @@ unless AppConfig.has_key? :pui_classification_title_only
 end
 
 unless AppConfig.has_key? :display_announcement
-  AppConfig[:display_announcement] = true
+  AppConfig[:display_announcement] = false
 end
 
 AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'objects', 'subjects', 'agents', 'classifications']
