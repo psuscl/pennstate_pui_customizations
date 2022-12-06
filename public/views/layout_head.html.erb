@@ -39,7 +39,7 @@
         <h3 class="modal-title" id="content-warning-modal-label"><%= t('messages.content_warning_label') %></h3>
       </header>
       <div class="modal-body">
-        <%= I18n.t("messages.content_warning") %>
+        <%= I18n.t("messages.content_warning").html_safe %>
       </div>
       <footer class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
