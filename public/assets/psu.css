@@ -62,9 +62,13 @@ a:hover, a:focus {
   align-items: center !important;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 767px) {
   .announcement {
     display: none;
+  }
+
+  .navbar-nav .open .dropdown-menu {
+    background-color: rgb(255, 255, 255);
   }
 }
 
@@ -206,6 +210,10 @@ a:hover, a:focus {
 
 .navbar-nav .nav-item .nav-link {
   color: hsla(0,0%,100%,.5)
+}
+
+.dropdown-menu {
+  min-width: auto;
 }
 
 .dropdown-menu .nav-item .nav-link {
