@@ -25,7 +25,7 @@
     <%= render partial: 'shared/children_tree', :locals => {:heading_text => t('cont_arr'), :root_node_uri => @result.uri, :current_node_uri => @result.uri} %>
   </div>
   <div class="col-sm-8">
-    <%= render partial: 'shared/digital', locals: {:dig_objs => @dig} %>
+    <!-- opt out of displaying a representative file version for now -->
     <%= render partial: 'shared/record_innards' %>
   </div>
 </div>

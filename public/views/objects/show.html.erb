@@ -39,7 +39,7 @@
       <!-- we need digital and record_innards in separate rows within this column so Mirador doesn't overlap everything -->
       <div class="row">
         <div class="col-md-12">
-          <%= render partial: 'shared/digital', locals: {:dig_objs => @dig} %>
+          <%= render partial: 'shared/digital', locals: {:dig_objs => @dig, record: @result} %>
         </div>
       </div>
       <div class="row">
