@@ -15,4 +15,18 @@ Rails.application.config.after_initialize do
       @json['ead_location']
     end
   end
+
+  class ResourceController
+    def waypoints
+      search_opts = {
+        'resolve[]' => ['top_container_uri_u_sstr:id', 'digital_object_uris:id']
+      }
+      results = archivesspace.search_records(params[:urls], search_opts, true)
+  
+      render :json => Hash[results.records.map {|record|
+                             @result = record
+                             [record.uri,
+                              render_to_string(:partial => 'infinite_item')]}]
+    end
+  end
 end

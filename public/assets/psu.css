@@ -323,6 +323,10 @@ a:hover, a:focus {
   font-weight: bold;
 }
 
+.largetree-container .indentor {
+  background-color: #fff;
+}
+
 .indent-level-1 .table-cell { padding-left: 20px; }
 .indent-level-2 .table-cell { padding-left: 40px; }
 .indent-level-3 .table-cell { padding-left: 60px; }
@@ -627,4 +631,20 @@ footer i {
 }
 [class*="column"] + [class*="column"].end {
   float: left;
+}
+
+.infinite-tree-view {
+  height: inherit;
+}
+
+.record-series, .record-subseries {
+  font-weight: bold;
+}
+
+.largetree-container .table.root div.table-row-series {
+  background-color: #bbb !important;
+}
+
+.largetree-container .table.root div.table-row-subseries {
+  background-color: #ddd !important;
 }
