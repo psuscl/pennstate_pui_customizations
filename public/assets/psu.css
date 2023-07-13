@@ -318,6 +318,10 @@ a:hover, a:focus {
   white-space: inherit;
 }
 
+.largetree-container .review-record-item {
+    padding: 0.5rem 0;
+}
+
 .largetree-container .table.root div.table-row:first-child {
   background-color: #fff;
   font-weight: bold;

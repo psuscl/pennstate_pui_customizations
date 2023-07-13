@@ -529,13 +529,14 @@
                 var button = row.find('.expandme');
                 row.attr('role', 'listitem');
                 var title = row.find('.title');
-                title.addClass('review-record');
                 var strippedTitle = $("<div>").html(node.title).text();
                 // prefix series and subseries with their node level
                 if(node.level == 'series' || node.level == 'subseries') {
+                    title.addClass('review-record');
                     title.append($('<span />').addClass('record-'+node.level).text(self.capitalize(node.level) + ": "));
                     title.find('span').append($('<a class="record-title" />').prop('href', TreeIds.link_url(node.uri)).text(node.title));
                 } else {
+                    title.addClass('review-record-item');
                     $.ajax(self.url_for('infinite/waypoints'), {
                         method: 'GET',
                         data: {
