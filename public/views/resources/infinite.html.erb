@@ -10,80 +10,40 @@
   </div>
 </div>
 
-<%= javascript_include_tag 'treesync' %>
-<%= javascript_include_tag 'infinite_scroll' %>
-<%= javascript_include_tag 'largetree' %>
 <%= javascript_include_tag 'tree_renderer' %>
 
 <%= render partial: 'resources/resource_alltabs' %>
 
 <div class="row">
-  <div id="sidebar" class="sidebar sidebar-container col-sm-4 infinite-tree-sidebar">
-    <% if AppConfig[:pui_search_collection_from_collection_organization] %>
-      <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => t('actions.search_in', :type => t('resource._singular'))} %>
-    <% end %>
-    <div class="infinite-tree-view largetree-container" id='tree-container'></div>
+  <div id="sidebar" class="sidebar sidebar-container col-sm-4">
+    <%= render partial: 'shared/children_tree', :locals => {:heading_text => t('cont_arr'), :root_node_uri => @result.uri, :current_node_uri => @result.uri} %>
   </div>
 
-  <div class="infinite-record-wrapper col-sm-8">
-    <div class="infinite-record-container">
-      <div class="root">
-        <% waypoint_size = 20 %>
-        <% @ordered_records.each_slice(waypoint_size).each_with_index do |refs, i| %>
-          <div class="waypoint" data-waypoint-number="<%= i %>" data-waypoint-size=<%= waypoint_size %> data-uris="<%= refs.map {|r| r['ref']}.join(';') %>"></div>
-        <% end %>
-      </div>
-    </div>
+  <div class="resources-content col-sm-8">
+    <h2><%= t('actions.hierarch') %></h2>
+    <div class="infinite-tree-view largetree-container" id="resource-tree-container"></div>
   </div>
 </div>
 
 <script>
+  var root_uri = "<%= app_prefix(@result.uri) %>";
+  var base_url = "<%= url_for(:action => :show) %>";
+  var should_link_to_record = true;
 
- var syncer = new TreeSync('<%= params[:rid]%>');
- window.syncer = syncer;
-
- var scroll = new InfiniteScroll('<%= url_for(:action => :show) %>/infinite',
-                                 $('.infinite-record-wrapper'),
-                                 <%= @ordered_records.length %>,
-                                 function() {
-                                     syncer.infiniteScrollIsReady(scroll);
-                                 });
-
- /* NOTE: This just here for debugging... */
- window.scroller = scroll;
-
- let simpleRendererOverride = new SimpleRenderer();
- simpleRendererOverride.nodeTemplate = $('<div class="table-row"> ' +
-                           '  <div class="table-cell drag-handle"></div>' +
-                           '  <div class="table-cell title"><button class="expandme" aria-expanded="false"><i class="expandme-icon glyphicon glyphicon-chevron-right" /></button></div>' +
-                           '</div>');
-
- var tree = new LargeTree(new TreeDataSource('<%= url_for(:action => :show) %>/tree'),
-                          $('#tree-container'),
-                          '<%= @root_uri %>',
-                          true,
-                          simpleRendererOverride,
-                          function() {
-                            syncer.treeIsReady(tree);
-                          },
-                          function(current_node, tree) {
-                            tree.expandNode(current_node);
-                          });
-
-window.tree = tree;
-</script>
-
-<script>
-  // handle clicks on tree items
-  $('.infinite-record-wrapper').on('click', '.infinite-record-record a.record-title', function(event) {
-    // update the hash so browser-back returns user to the record they clicked
-    var $record = $(this).closest('.infinite-record-record');
-    var uri = $record.data('uri');
-    var tree_id = TreeIds.uri_to_tree_id(uri);
-    location.hash = '#tree::'+tree_id;
-
-    return true;
-  });
+  let infiniteScrollOverride = new SimpleRenderer(should_link_to_record);
+  infiniteScrollOverride.nodeTemplate = $('<div class="table-row"> ' +
+                            '  <div class="table-cell title"><button class="expandme" aria-expanded="false"><i class="expandme-icon glyphicon glyphicon-chevron-right" /></button></div>' +
+                            '</div>');
+  
+  var tree = new LargeTreeReplacement(new TreeDataSource(root_uri + '/tree'),
+    $('#resource-tree-container'),
+    root_uri,
+    true,
+    infiniteScrollOverride,
+    function() {
+      var tree_id = TreeIds.uri_to_tree_id('<%= @result.uri %>');
+    }
+  );
 </script>
 
 <%= render partial: 'shared/modal_actions' %>
