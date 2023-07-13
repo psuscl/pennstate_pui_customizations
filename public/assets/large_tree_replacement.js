@@ -543,7 +543,7 @@
                         }
                     }).done(function(records) {
                         title.append(records[node.uri]);
-                        var reviewItem = title.find('div.review-item-title');
+                        var reviewItem = title.find('div.review-item-information');
                         if(node.has_digital_instance) {
                             var dmlabel = $('<span class="label label-info" />').text("Digital materials available");
                             reviewItem.append($('<h4 />').wrapInner(dmlabel));
