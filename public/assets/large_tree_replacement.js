@@ -1,3 +1,6 @@
+// a simplified version of LargeTree that takes out most of the infinite scroll functionality
+// we'll see how much we can live with the hits on performance this causes
+
 (function(exports) {
     var SCROLL_DELAY_MS = 100;
     var THRESHOLD_EMS = 300;
@@ -517,7 +520,6 @@
             var newRows = [];
 
             $(nodes).each(function (idx, node) {
-                console.log(nodes);
                 var row = self.renderer.get_node_template();
 
                 // leave everything at Indent Level 1 for now while I figure out how to build this table
@@ -545,6 +547,12 @@
                         if(node.has_digital_instance) {
                             var dmlabel = $('<span class="label label-info" />').text("Digital materials available");
                             reviewItem.append($('<h4 />').wrapInner(dmlabel));
+                        }
+
+                        // if a request list exists, try to set it up
+                        // (this shouldn't do anything if request_list is turned off)
+                        if(window.request_list !== 'undefined') {
+                            window.request_list.setUpList();
                         }
                     });
                 }
