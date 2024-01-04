@@ -652,3 +652,25 @@ footer i {
 .largetree-container .table.root div.table-row-subseries {
   background-color: #ddd !important;
 }
+
+/* use Bootstrap 5's button colors */
+
+.btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+.btn-success {
+  background-color: #198754;
+  border-color: #198754;
+}
+
+.btn-success:hover {
+  background-color: #157347;
+  border-color: #146c43;
+}
