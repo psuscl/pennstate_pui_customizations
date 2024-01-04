@@ -1,40 +1,17 @@
 <a name="main" title="<%= t('internal_links.main') %>"></a>
 
 <div id="main-content" class="row">
-  <div class="information col-sm-7">
-    <%= render partial: 'shared/idbadge', locals: {:result => @result, :props => { :full => true} } %>
-    <%= render partial: 'resources/ark' %>
+  <div id="sidebar" class="resources-sidebar col-xs-12 col-sm-4">
+    <%= render partial: 'resources/sidebar', locals: {:result => @result, :props => {:full => true}} %>
   </div>
-  <div class="page_actions col-sm-5 right">
-    <%= render partial: 'shared/page_actions', locals: {:record => @result, :title =>  @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
-  </div>
-</div>
 
-<%= render partial: 'resources/resource_alltabs' %>
-
-<div class="row">
-  <% unless @results.blank? || @results['total_hits'] == 0 %>
-    <% if @facets.blank? %>
-      <div class="col-sm-12">
-        <% @results.records.each do |result| %>
-          <%= render partial: 'shared/result', locals: {:result => result, :props => {:full => false}} %>
-        <% end %>
-        <%= render partial: 'shared/pagination', locals: {:pager  => @pager}  %>
-      </div>
-    <% else %>
-      <div id="sidebar" class="col-sm-4 sidebar sidebar-container">
-        <%= render partial: 'shared/facets' %>
-      </div>
-      <div class="col-sm-8">
-        <% unless @results.blank? || @results['total_hits'] == 0 %>
-          <% @results.records.each do |result| %>
-            <%= render partial: 'shared/result', locals: {:result => result, :props => {:full => false}} %>
-          <% end %>
-          <%= render partial: 'shared/pagination', locals: {:pager  => @pager}  %>
-        <% end %>
-      </div>
+  <div class="resources-content col-xs-12 col-sm-8">
+    <h2><%= t('actions.numeric') %></h2>
+    <p class="resources-inventory-text"><%= t('messages.inventory_text') %></p>
+    <% @results.records.each do |result| %>
+      <%= render partial: 'shared/result', locals: {:result => result, :props => {:full => false}} %>
     <% end %>
-  <% end %>
+  </div>
 </div>
 
 <%= render partial: 'shared/modal_actions' %>

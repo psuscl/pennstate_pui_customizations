@@ -1,26 +1,15 @@
 <a name="main" title="<%= t('internal_links.main') %>"></a>
 
-<div id="main-content" class="row">
-  <div class="information col-sm-7">
-    <%= render partial: 'shared/idbadge', locals: {:result => @result, :props => { :full => true} } %>
-    <%= render partial: 'resources/ark' %>
-  </div>
-  <div class="page_actions col-sm-5 right">
-    <%= render partial: 'shared/page_actions', locals: {:record => @result, :title =>  @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
-  </div>
-</div>
-
 <%= javascript_include_tag 'tree_renderer' %>
 
-<%= render partial: 'resources/resource_alltabs' %>
-
-<div class="row">
-  <div id="sidebar" class="sidebar sidebar-container col-sm-4">
-    <%= render partial: 'shared/children_tree', :locals => {:heading_text => t('cont_arr'), :root_node_uri => @result.uri, :current_node_uri => @result.uri} %>
+<div id="main-content" class="row">
+  <div id="sidebar" class="resources-sidebar col-xs-12 col-sm-4">
+    <%= render partial: 'resources/sidebar', locals: {:result => @result, :props => {:full => true, :sidebar_tree => false}} %>
   </div>
 
-  <div class="resources-content col-sm-8">
+  <div class="resources-content col-xs-12 col-sm-8">
     <h2><%= t('actions.hierarch') %></h2>
+    <p class="resources-infinite-text"><%= t('messages.infinite_text') %></p>
     <div class="infinite-tree-view largetree-container" id="resource-tree-container"></div>
   </div>
 </div>

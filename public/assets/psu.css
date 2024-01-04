@@ -1,3 +1,5 @@
+/* basic styles */
+
 html, body {
   font-size: 100%;
 }
@@ -88,36 +90,6 @@ a:hover, a:focus {
   position: fixed;
   top: 0;
   z-index: 99;
-}
-
-.ask {
-  display: none;
-}
-
-@media only screen and (min-width: 48.063em) {
-  .ask {
-    display: block;
-    position: fixed;
-    padding: 0;
-    right: -2px;
-    top: 65%;
-    z-index: 1;
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.57);
-    cursor: pointer;
-  }
-  .ask .fa-spin {
-    padding: 20px;
-  }
-  .ask button {
-    color: #fafafa;
-    text-transform: uppercase;
-    line-height: 1;
-    margin-bottom: 0;
-    padding: 0;
-  }
-  .ask__part1 {
-    font-size: 2rem;
-  }
 }
 
 .search-results {
@@ -371,6 +343,8 @@ a:hover, a:focus {
   margin-top: 0;
 }
 
+/* heading styles */
+
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-family: roboto_slabregular, Georgia, sans-serif;
   font-weight: 700;
@@ -379,9 +353,16 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   margin-top: 0;
 }
 
-.record-type-badge {
-  font-family: "Montserrat", sans-serif;
+h1 { font-size: 1.5rem; }
+
+h2 {
+  font-size: 1.2rem;
+  padding: 0.5rem 0;
+  border-bottom: solid 2px #e5e5e5;
 }
+
+h3 { font-size: 1rem; }
+
 .col-sm-12, .col-md-12, .col-lg-12 {
   padding-right: 0;
   padding-left: 0;
@@ -643,6 +624,15 @@ footer i {
 .sidebar-information {
   padding: 1rem;
   background-color: #f5f5f5;
+}
+
+.record-type-badge {
+  font-family: "Montserrat", sans-serif;
+}
+
+.record-type-badge.resource {
+  color: #871717;
+  border-color: #871717;
 }
 
 .sidebar-info-dropdown-menu {

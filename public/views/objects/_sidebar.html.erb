@@ -1,0 +1,49 @@
+<%
+  if result.instance_of?(ArchivalObject) || @has_children
+    if result.kind_of?(DigitalObject)
+      heading_text = t('dig_cont_arr')
+    else
+      heading_text = t('cont_arr')
+    end
+  end
+%>
+
+<div class="sidebar-information">
+  <h3 class="record-type-badge <%= result.primary_type %>">
+    <i class="<%= icon_for_type(result.primary_type) %>"></i>&#160;<%= t("#{result.primary_type}._singular") %> <% if result.container_summary_for_badge %> &mdash; <%= result.container_summary_for_badge %><% end %>
+  </h3>
+
+  <div class="row record-sidebar-title">
+    <%= render partial: 'shared/sidebar_info', locals: {:result => result, :props => {:full => true} } %>
+    <h1>
+      <a href="<%= app_prefix(resource_base_url(result)) %>"><%= result.parse_full_title(true) %></a>
+    </h1>
+  </div>
+
+  <div class="page_actions" title="<%= t('page_actions') %>">
+    <%= render partial: 'shared/page_actions', locals: {:record => result, :title => result.display_string, :url => request.fullpath, :cite => result.cite} %>
+  </div>
+</div>
+
+<ul class="resources-sidebar-links">
+  <% if @result.instance_of?(ArchivalObject) %>
+    <li><a href="#collection-organization">Collection Organization</a></li>
+  <% end %>
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#background">Background</a></li>
+  <% unless result.subjects.blank? %>
+    <li><a href="#subjects">Subjects</a></li>
+  <% end %>
+  <li><a href="#using-these-materials">Using These Materials</a></li>
+</ul>
+
+<% if @result.instance_of?(ArchivalObject) %>
+  <% if AppConfig[:pui_search_collection_from_archival_objects] %>
+    <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => result.resource_uri, :action_text => "#{t('actions.search_in', :type => t('resource._singular'))}"} %>
+  <% end %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= render partial: 'shared/children_tree', :locals => {:heading_text => heading_text, :root_node_uri => result.root_node_uri, :current_node_uri => result.uri} %>
+    </div>
+  </div>
+<% end %>

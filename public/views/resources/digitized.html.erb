@@ -1,20 +1,14 @@
 <!-- remove breadcrumbs, add results_head to search results -->
-
 <a name="main" title="<%= t('internal_links.main') %>"></a>
 
-<div id="main-content" class="row">
-  <div class="information col-sm-7">
-    <%= render partial: 'shared/idbadge', locals: {:result => @result, :props => { :full => true} } %>
+<div id="main-content" class="row resources">
+  <div id="sidebar" class="resources-sidebar col-xs-12 col-sm-4">
+    <%= render partial: 'resources/sidebar', locals: {:result => @result, :props => {:full => true}} %>
   </div>
-  <div class="page_actions col-sm-5 right">
-    <%= render partial: 'shared/page_actions', locals: {:record => @result, :title =>  @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
-  </div>
-</div>
 
-<%= render partial: 'resources/resource_alltabs' %>
+  <div class="resources-content col-xs-12 col-sm-8">
+    <h2><%= t('actions.digitized') %></h2>
 
-<div class="row">
-  <div class="col-sm-9">
     <%= render partial: 'shared/results_head', locals: {:pager => @pager, :results => @results} %>
     <% unless @results.blank? || @results['total_hits'] == 0 %>
       <% @results.records.each do |result| %>
@@ -23,11 +17,6 @@
       <%= render partial: 'shared/pagination', locals: {:pager  => @pager}  %>
     <% end %>
   </div>
-  <% unless @results.blank? || @results['total_hits'] == 0 || @facets.blank? %>
-    <div id="sidebar" class="col-sm-3 sidebar sidebar-container">
-      <%= render partial: 'shared/facets' %>
-    </div>
-  <% end %>
 </div>
 
 <%= render partial: 'shared/modal_actions' %>
