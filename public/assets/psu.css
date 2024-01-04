@@ -363,6 +363,7 @@ h2.panel-title {
 }
 
 h3 { font-size: 1rem; }
+.search-results h3 { font-size: 1.25rem; }
 
 .col-sm-12, .col-md-12, .col-lg-12 {
   padding-right: 0;

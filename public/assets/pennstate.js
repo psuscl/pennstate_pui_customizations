@@ -43,3 +43,23 @@ function updateRequestNumber() {
 
 // Bootstrap 3 tooltips
 $(function() { $("[data-toggle='tooltip']").tooltip(); });
+
+// Bootstrap 3 -- make facet list display on large screens
+// (we can hopefully get rid of this once ASpace is on a modern version of Bootstrap)
+$(document).ready(function(){
+  if ($(window).width() >= 768) {
+    $('#facets_list').collapse("show");
+    $('.facets-accordion-toggle').hide();
+  }
+});
+
+$(window).resize(function(){
+  if ($(window).width() >= 768) {
+    $('#facets_list').collapse("show");
+    $('.facets-accordion-toggle').hide();
+  }
+  if ($(window).width() <= 768) {
+    $('#facets_list').collapse("hide");
+    $('.facets-accordion-toggle').show();
+  }
+});
