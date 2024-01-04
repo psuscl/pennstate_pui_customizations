@@ -349,7 +349,9 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
 
 h1 { font-size: 1.5rem; }
 
-h2 {
+#sidebar h2,
+.resources-content h2,
+.objects-content h2 {
   font-size: 1.2rem;
   padding: 0.5rem 0;
   border-bottom: solid 2px #e5e5e5;
