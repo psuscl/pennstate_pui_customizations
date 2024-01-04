@@ -76,12 +76,6 @@ a:hover, a:focus {
   padding: 0;
 }
 
-.search_row .form-group {
-  padding-left: 0;
-  padding-right: 0;
-  margin-bottom: 0;
-}
-
 .top-bar {
   background-color: #fff !important;
   border-top: none;
@@ -277,14 +271,8 @@ a:hover, a:focus {
   }
 }
 
-.search {
-  padding: 1rem;
-  border: 1px dotted #ccc;
-}
-
-.search.sidebar {
-  margin-bottom: 1rem;
-}
+.search { padding: 1rem; }
+.search.sidebar { margin-bottom: 1rem; }
 
 .filter_more {
   margin-bottom: 20px;
@@ -383,27 +371,12 @@ a:hover, a:focus {
   margin-top: 0;
 }
 
-/* Resource ARK CSS */
-.fa-ark {
-  padding: 0.25rem;
-}
-
-.fa-ark .fa-ark-label {
-  float: left;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-}
-
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-family: roboto_slabregular, Georgia, sans-serif;
   font-weight: 700;
   font-style: normal;
   color: #222222;
   margin-top: 0;
-}
-
-h1 {
-  font-size: 2rem;
 }
 
 .record-type-badge {
@@ -478,15 +451,6 @@ h1 {
 
 #main-content.accessions, #main-content.objects {
   padding: 0;
-}
-
-#sidebar {
-  border: none;
-  padding: 0;
-}
-
-.sidebar > .search {
-  margin-bottom: 1rem;
 }
 
 .navbar-collapse {
@@ -651,6 +615,65 @@ footer i {
 
 .largetree-container .table.root div.table-row-subseries {
   background-color: #ddd !important;
+}
+
+/* form styles */
+
+.form-horizontal .form-group { 
+  margin-left: 0;
+  margin-right: 0; 
+}
+
+.search_row .form-group {
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: 0;
+}
+
+/* sidebar updates */
+
+.resources-sidebar {
+  border: none;
+  box-shadow: 1px 0 1px -1px rgba(0,0,0,0.06),2px 0 2px -2px rgba(0,0,0,0.06),4px 0 4px -4px rgba(0,0,0,0.06),8px 0 8px -8px rgba(0,0,0,0.06),16px 0 16px -16px rgba(0,0,0,0.06);
+}
+
+.resources-sidebar form { max-width: none; }
+
+.sidebar-information {
+  padding: 1rem;
+  background-color: #f5f5f5;
+}
+
+.sidebar-info-dropdown-menu {
+  padding: 0.5rem;
+  width: 360px;
+  margin-top: 1rem;
+}
+
+.sidebar-info-dropdown-menu .property { font-weight: bold; }
+
+ul.resources-sidebar-links,
+ul.subjects_list {
+  list-style-type: none;
+  padding-left: 1rem;
+  margin-top: 10px;
+}
+
+.list-inline > li { padding: 0; }
+
+.resources-sidebar-links li {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.sidebar > .search { margin-bottom: 1rem; }
+
+.sidebar-tree { padding: 0.5rem; }
+
+/* sidebar styles for tablets and large screens */
+
+@media (min-width: 768px) {
+  .resources-sidebar { padding: 0; }
 }
 
 /* use Bootstrap 5's button colors */
