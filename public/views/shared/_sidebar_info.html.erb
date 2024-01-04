@@ -1,0 +1,60 @@
+<div class="dropdown pull-right">
+  <button id="collectionInfoDropdown" class="dropdown-toggle sidebar-info-dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-info-circle"></i> <i class="fa fa-caret-down fa-icon"></i>
+    <span class="sr-only">View collection information</span>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right sidebar-info-dropdown-menu">
+    <% 
+      comp_id = display_component_id(result, props.fetch(:infinite_item, false))
+
+      if result.kind_of?(Resource)
+        ark_url = "https://arks.libraries.psu.edu/#{result.ead_location}"
+        
+        if result['json'].has_key?('user_defined')
+          if result['json']['user_defined']['string_1']
+              catkey = result['json']['user_defined']['string_1']
+          end
+        end
+      end
+    %>
+
+    <div class="sidebar-info-dropdown-table">
+      <% if result.kind_of?(Resource) %>
+        <div class="row">
+          <div class="col-xs-6 property">Collection ID</div>
+          <div class="col-xs-6 value"><%= comp_id %></div>
+        </div>
+        <% if catkey %>
+          <div class="row">
+            <div class="col-xs-6 property">Catalog record</div>
+            <div class="col-xs-6 value"><a href="https://catalog.libraries.psu.edu/<%= catkey %>"><%= catkey %></a></div>
+          </div>
+        <% end %>
+        <% unless @result.ead_location.blank? %>
+          <div class="row">
+            <div class="col-xs-6 property">ARK</div>
+            <div class="col-xs-6 value"><%= @result.ead_location %></div>
+          </div>
+        <% end %>
+        <% unless @result.ead_location.blank? %>
+          <div class="row">
+            <div class="col-xs-12 property">Permalink</div>
+            <div class="col-xs-12 value"><a href="<%= ark_url %>"><%= ark_url %></a></div>
+          </div>
+        <% end %>
+      <% else %>
+        <% if result.is_a?(DigitalObject) %>
+          <div class="row">
+            <div class="col-xs-12 property">Object ID</div>
+            <div class="col-xs-12 value"><%= comp_id %></div>
+          </div>
+        <% else %>
+          <div class="row">
+            <div class="col-xs-62 property">Breadcrumbs</div>
+            <div class="col-xs-62 value"><%= render partial: 'shared/breadcrumbs' %></div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
