@@ -632,12 +632,13 @@ footer i {
 
 /* sidebar updates */
 
-.resources-sidebar {
+#sidebar {
+  padding: 0;
   border: none;
   box-shadow: 1px 0 1px -1px rgba(0,0,0,0.06),2px 0 2px -2px rgba(0,0,0,0.06),4px 0 4px -4px rgba(0,0,0,0.06),8px 0 8px -8px rgba(0,0,0,0.06),16px 0 16px -16px rgba(0,0,0,0.06);
 }
 
-.resources-sidebar form { max-width: none; }
+#sidebar form { max-width: none; }
 
 .sidebar-information {
   padding: 1rem;
@@ -669,12 +670,6 @@ ul.subjects_list {
 .sidebar > .search { margin-bottom: 1rem; }
 
 .sidebar-tree { padding: 0.5rem; }
-
-/* sidebar styles for tablets and large screens */
-
-@media (min-width: 768px) {
-  .resources-sidebar { padding: 0; }
-}
 
 /* use Bootstrap 5's button colors */
 

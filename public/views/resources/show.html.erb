@@ -5,7 +5,7 @@
       <div class="searchstatement"><%= @search[:search_statement].html_safe %></div>
     <% end %>
   </div>
-  <div class="resources-sidebar col-xs-12 col-sm-4">
+  <div id="sidebar" class="resources-sidebar col-xs-12 col-sm-4">
     <%= render partial: 'resources/sidebar', locals: {:result => @result, :props => {:full => true}} %>
   </div>
 
