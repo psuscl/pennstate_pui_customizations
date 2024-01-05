@@ -593,11 +593,11 @@ footer i {
 }
 
 .largetree-container .table.root div.table-row-series {
-  background-color: #bbb !important;
+  background-color: #e7f1ff !important;
 }
 
 .largetree-container .table.root div.table-row-subseries {
-  background-color: #ddd !important;
+  background-color: #eee !important;
 }
 
 /* form styles */
