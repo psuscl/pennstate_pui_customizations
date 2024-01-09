@@ -9,6 +9,7 @@ en:
   actions:
     hierarch: Request Materials
     print: Print PDF
+    view_in_catalog: View in Catalog
   search_results:
     results_head: "<strong>%{start} - %{end}</strong> of <strong>%{total}</strong>"
     one_entry: "<strong>%{total}</strong> entry found"
