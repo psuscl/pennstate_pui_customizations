@@ -10,7 +10,7 @@
       <% end %>
       <%= t('search_results.results_head', {:start => results['offset_first'], :end => results['offset_last'],
         :total => results['total_hits']}).html_safe %>
-      <% if pager.page < pager.pages.last %>
+      <% if pager.page < pager.last_page %>
          | <span class="next"><a href="<%= app_prefix(pager.link) %>&page=<%= pager.next %>"><span aria-hidden="true">&rarr;</span> Next</a>
       <% else %>
          | Next <span aria-hidden="true">&rarr;</span>
