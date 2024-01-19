@@ -544,11 +544,12 @@
                         }
                     }).done(function(records) {
                         title.append(records[node.uri]);
-                        var reviewItem = title.find('div.review-item-information');
-                        if(node.has_digital_instance) {
-                            var dmlabel = $('<span class="label label-info" />').text("Digital materials available");
-                            reviewItem.append($('<h4 />').wrapInner(dmlabel));
-                        }
+                        // keeping the Digital Materials Available code but ignoring it for now
+                        //var reviewItem = title.find('div.review-item-information');
+                        //if(node.has_digital_instance) {
+                        //    var dmlabel = $('<span class="label label-info" />').text("Digital materials available");
+                        //    reviewItem.append($('<h4 />').wrapInner(dmlabel));
+                        //}
 
                         // if a request list exists, try to set it up
                         // (this shouldn't do anything if request_list is turned off)

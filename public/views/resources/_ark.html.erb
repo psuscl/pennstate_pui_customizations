@@ -1,7 +1,0 @@
-<% if !@result.ead_location.blank? %>
-  <% ark_url = "https://arks.libraries.psu.edu/" + @result.ead_location %>
-
-  <div class="fa-ark">
-    <span class="fa-ark-label">Link:</span>&#160;<a class="fa-ark-tooltip" data-toggle="tooltip" data-placement="bottom" title="<%= t('messages.ark_tooltip_text') %>" href="<%= ark_url %>"><%= ark_url %></a>
-  </div>
-<% end %>

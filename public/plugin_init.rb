@@ -7,6 +7,16 @@ unless AppConfig.has_key? :display_announcement
 end
 
 AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'objects', 'subjects', 'agents', 'classifications']
+AppConfig[:pui_page_custom_actions] = [
+  {
+    'record_type' => ['resource'],
+    'erb_partial' => 'shared/view_catalog_action'
+  },
+  {
+    'record_type' => ['resource'],
+    'erb_partial' => 'shared/request_materials_action'
+  }
+]
 
 # various overrides
 Rails.application.config.after_initialize do
