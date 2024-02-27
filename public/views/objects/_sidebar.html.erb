@@ -12,7 +12,7 @@
   <div class="row record-sidebar-title">
     <%= render partial: 'shared/sidebar_info', locals: {:result => result, :props => {:full => true} } %>
     <h1>
-      <a href="<%= app_prefix(resource_base_url(result)) %>"><%= result.parse_full_title(true) %></a>
+      <a href="<%= app_prefix(resource_base_url(result)) %>"><%= result.parse_full_title(true).html_safe %></a>
     </h1>
   </div>
 
