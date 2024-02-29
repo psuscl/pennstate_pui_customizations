@@ -1,6 +1,8 @@
 <a name="main" title="<%= t('internal_links.main') %>"></a>
 
-<%= javascript_include_tag 'tree_renderer' %>
+<%
+  waypoint_size = 200
+%>
 
 <div id="main-content" class="row">
   <div id="sidebar" class="resources-sidebar col-xs-12 col-sm-4">
@@ -10,29 +12,79 @@
   <div class="resources-content col-xs-12 col-sm-8">
     <h2><%= t('actions.hierarch') %></h2>
     <p class="resources-infinite-text"><%= t('messages.infinite_text') %></p>
-    <div class="infinite-tree-view largetree-container" id="resource-tree-container"></div>
+    <div 
+      class="infinite-tree-view largetree-container" 
+      id="tree-container"
+      data-waypoint-size="<%= waypoint_size %>"
+      data-repo-id="<%= @result['uri'].split('/')[2] %>"
+      data-resource-id="<%= @result['uri'].split('/')[4] %>"
+    >
+    </div>
   </div>
 </div>
 
-<script>
-  var root_uri = "<%= app_prefix(@result.uri) %>";
-  var base_url = "<%= url_for(:action => :show) %>";
-  var should_link_to_record = true;
+<dialog data-loading-modal>
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</dialog>
 
-  let infiniteScrollOverride = new SimpleRenderer(should_link_to_record);
-  infiniteScrollOverride.nodeTemplate = $('<div class="table-row"> ' +
-                            '  <div class="table-cell title"><button class="expandme" aria-expanded="false" style="float: left;"><i class="expandme-icon glyphicon glyphicon-chevron-right" /></button></div>' +
-                            '</div>');
-  
-  var tree = new LargeTreeReplacement(new TreeDataSource(root_uri + '/tree'),
-    $('#resource-tree-container'),
-    root_uri,
-    true,
-    infiniteScrollOverride,
-    function() {
-      var tree_id = TreeIds.uri_to_tree_id('<%= @result.uri %>');
-    }
-  );
+<template id="root-row-template">
+  <div id="" class="table-row root-row" role="listitem" data-uri="">
+    <div class="table-cell title record-title"></div>
+  </div>
+</template>
+
+<template id="node-row-template">
+  <div id="" class="table-row largetree-node" role="listitem" data-uri="">
+    <div class="table-cell title" title="">
+      <button class="expandme" aria-expanded="false">
+        <i class="expandme-icon glyphicon glyphicon-chevron-right"></i>
+        <span class="sr-only"></span>
+      </button>
+      <span class="review-record">
+        <a class="record-title" href=""></a>
+      </span>
+    </div>
+  </div>
+</template>
+
+<script>
+const resourceUri = '<%= @result["uri"] %>';
+const treeWaypointSize = '<%= waypoint_size %>';
+const identifier_separator = '<%= I18n.t("resource.identifier_separator") %>';
+const date_type_bulk = '<%= I18n.t("date_type_bulk.bulk") %>';
+
+const infiniteTree = new InfiniteTree(
+  treeWaypointSize,
+  resourceUri,
+  identifier_separator,
+  date_type_bulk
+);
+
+infiniteTree.container.addEventListener('click', (e) => {
+  treeClickDelegator(e, infiniteTree);
+});
+
+/**
+ * treeClickDelegator
+ * @description - Delegate click events on the InfiniteTree container
+ * @param {Event} event - Click event
+ * @param {InfiniteTree} tree - InfiniteTree instance
+ */
+function treeClickDelegator(event, tree) {
+  if (
+    !event.target.classList.contains('expandme') &&
+    !event.target.classList.contains('expandme-icon') &&
+    !event.target.classList.contains('record-title')
+  ) return;
+
+  if (event.target.className.includes('expandme')) {
+    tree.expandHandler(event);
+  } else if (event.target.classList.contains('record-title')) {
+    records.treeLinkHandler(event);
+  }
+}
 </script>
 
 <%= render partial: 'shared/modal_actions' %>

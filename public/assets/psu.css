@@ -280,7 +280,7 @@ a:hover, a:focus, .breadcrumb * a:hover, .breadcrumb * a:focus { color: #1585cf;
 }
 
 .largetree-container .indentor {
-  background-color: #fff;
+  background-color: inherit;
 }
 
 .indent-level-1 .table-cell { padding-left: 20px; }
