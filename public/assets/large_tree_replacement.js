@@ -274,6 +274,9 @@
             self.considerPopulatingWaypoint();
         }, 0);
 
+        /* remove the empty table-row-group */
+        row.next('.table-row-group').remove();
+
         $(self.collapseNodeHooks).each(function (idx, hook) {
             hook();
         });
