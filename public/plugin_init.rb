@@ -1,3 +1,5 @@
+AppConfig[:matomo_enabled] = false
+
 unless AppConfig.has_key? :pui_classification_title_only
   AppConfig[:pui_classification_title_only] = false
 end

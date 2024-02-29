@@ -271,7 +271,7 @@ a:hover, a:focus, .breadcrumb * a:hover, .breadcrumb * a:focus { color: #1585cf;
 }
 
 .largetree-container .review-record-item {
-    padding: 0.5rem 0;
+    padding: 0.5rem;
 }
 
 .largetree-container .table.root div.table-row:first-child {
@@ -284,12 +284,11 @@ a:hover, a:focus, .breadcrumb * a:hover, .breadcrumb * a:focus { color: #1585cf;
 }
 
 .indent-level-1 .table-cell { padding-left: 20px; }
-.indent-level-2 .table-cell { padding-left: 40px; }
-.indent-level-3 .table-cell { padding-left: 60px; }
-.indent-level-4 .table-cell { padding-left: 80px; }
-.indent-level-5 .table-cell { padding-left: 100px; }
+.indent-level-2 .table-cell { padding-left: 20px; }
+.indent-level-3 .table-cell { padding-left: 40px; }
+.indent-level-4 .table-cell { padding-left: 60px; }
+.indent-level-5 .table-cell { padding-left: 80px; }
 .table-cell > button { margin-left: -20px; }
-/* DU might have indent levels > 5 but I'm sure we don't... */
 
 .breadcrumb {
   font-size: 0.8rem;

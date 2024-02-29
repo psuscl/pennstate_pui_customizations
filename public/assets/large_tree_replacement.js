@@ -522,8 +522,7 @@
             $(nodes).each(function (idx, node) {
                 var row = self.renderer.get_node_template();
 
-                // leave everything at Indent Level 1 for now while I figure out how to build this table
-                row.addClass('indent-level-1').addClass('table-row-' + node.level);
+                row.addClass('indent-level-' + level).addClass('table-row-' + node.level);
                 row.data('level', level);
                 row.data('child_count', node.child_count);
                 var button = row.find('.expandme');
@@ -536,7 +535,6 @@
                     title.append($('<span />').addClass('record-'+node.level).text(self.capitalize(node.level) + ": "));
                     title.find('span').append($('<a class="record-title" />').prop('href', TreeIds.link_url(node.uri)).text(node.title));
                 } else {
-                    title.addClass('review-record-item');
                     $.ajax(self.url_for('infinite/waypoints'), {
                         method: 'GET',
                         data: {
@@ -544,15 +542,6 @@
                         }
                     }).done(function(records) {
                         title.append(records[node.uri]);
-                        // keeping the Digital Materials Available code but ignoring it for now
-                        //var reviewItem = title.find('div.review-item-information');
-                        //if(node.has_digital_instance) {
-                        //    var dmlabel = $('<span class="label label-info" />').text("Digital materials available");
-                        //    reviewItem.append($('<h4 />').wrapInner(dmlabel));
-                        //}
-
-                        // if a request list exists, try to set it up
-                        // (this shouldn't do anything if request_list is turned off)
                         if(window.request_list !== 'undefined') {
                             window.request_list.setUpList();
                         }
