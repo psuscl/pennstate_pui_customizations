@@ -1,3 +1,5 @@
+AppConfig[:matomo_enabled] = true
+
 unless AppConfig.has_key? :pui_classification_title_only
   AppConfig[:pui_classification_title_only] = false
 end
@@ -5,6 +7,9 @@ end
 unless AppConfig.has_key? :display_announcement
   AppConfig[:display_announcement] = false
 end
+
+AppConfig[:pui_branding_img] = 'assets/pennstate.png'
+AppConfig[:pui_branding_img_alt_text] = 'Penn State University Libraries'
 
 AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'objects', 'subjects', 'agents', 'classifications']
 AppConfig[:pui_page_custom_actions] = [
