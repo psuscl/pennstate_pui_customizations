@@ -20,33 +20,3 @@
   </script>
   <!-- End Matomo Code -->
 <% end %>
-
-<!-- display a content note on first load -->
-<script type="text/javascript">
-  $(document).ready(function() {
-    if(!(Cookies.get('as_pui_hideContentWarning'))) {
-      $('#content-warning-modal').modal('show');
-    }
-
-    $('#content-warning-modal button').click(function() {
-      Cookies.set('as_pui_hideContentWarning', true, { expires: 7 });
-    });
-  });
-</script>
-
-<div class="modal fade" id="content-warning-modal" tabindex="-1" role="dialog" aria-labelledby="content-warning-modal-label" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <header class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h3 class="modal-title" id="content-warning-modal-label"><%= t('messages.content_warning_label') %></h3>
-      </header>
-      <div class="modal-body">
-        <%= I18n.t("messages.content_warning").html_safe %>
-      </div>
-      <footer class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </footer>
-    </div>
-  </div>
-</div>

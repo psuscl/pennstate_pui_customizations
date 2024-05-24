@@ -14,9 +14,6 @@ en:
     results_head: "<strong>%{start} - %{end}</strong> of <strong>%{total}</strong>"
     one_entry: "<strong>%{total}</strong> entry found"
   messages:
-    content_warning: >
-      Penn State’s archival and digital collections may include harmful or offensive content and/or language. Some of the images and documents included in our collections reflect outdated, biased, offensive, and possibly disturbing views and opinions. Researchers should be aware that they may engage with potentially disturbing content. Work to address harmful content is ongoing. Potentially offensive and harmful imagery cannot be redacted or obscured at this time. <a href="https://libraries.psu.edu/about/libraries/special-collections-library/statement-more-inclusive-archival-collections">Read more about our efforts to ensure more inclusive archival description</a>.
-    content_warning_label: Content Notice
     ark_tooltip_text: This link is an Archival Resource Key (ARK). We use ARKs to provide a link that will always identify the collection being described, even if our website changes.
     infinite_text: >
       You may review the contents of the collection here. When you see an item or items that you would like to consult in the reading room, click on the 'Request This' button to add them to your My Requests cart above. When you are finished, click on "My Requests" to review and submit your requests for the Research Services team to review.
