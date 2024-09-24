@@ -4,6 +4,7 @@ en:
     header_title: Archival Collections
     welcome_page_title: Welcome
     welcome_head: Penn State University Libraries Archival Collections
+    welcome_message: ""
     announcement: >
       For the latest COVID-19 news and information, visit Penn State's <a href="https://virusinfo.psu.edu/">Coronavirus Information website</a>.
   actions:
