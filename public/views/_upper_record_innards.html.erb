@@ -1,0 +1,14 @@
+<%# embed Mirador or Kaltura viewer, if enabled and available %>
+<%# (Consider moving this code to the viewer plugin) %>
+
+<% if @result.kind_of?(ArchivalObject) || @result.kind_of?(DigitalObject) %>
+  <% if AppConfig[:enable_mirador] || AppConfig[:enable_kaltura] %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= render partial: 'shared/digital', locals: {:dig_objs => @dig, record: @result} %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+
+  

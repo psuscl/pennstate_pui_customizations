@@ -10,6 +10,11 @@ en:
     hierarch: Request Materials
     print: Print PDF
     view_in_catalog: View in Catalog
+  resource:
+    _public:
+      background: Additional Information
+      summary: Summary
+      using_materials: Using These Materials
   search_results:
     results_head: "<strong>%{start} - %{end}</strong> of <strong>%{total}</strong>"
     one_entry: "<strong>%{total}</strong> entry found"
