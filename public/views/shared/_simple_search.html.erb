@@ -1,33 +1,33 @@
-<div class="row">
-  <div class="col-xs-8">
+<section id="simple_search" class="d-flex flex-row px-4 py-2 align-items-center bg-light">
+  <div class="col-8">
     <% @search = Search.new unless defined?(@search) %>
     <%= form_tag(app_prefix("#{search_url}"), method: 'get', :id => 'simple_search') do %>
-      <div class="row search_row" id="search_row_0">
-        <div class="hidden bool form-group form-inline">
+      <div class="form-row" id="search_row_0">
+        <div class="d-none bool form-group form-inline">
           <%= label_tag("op0", t('advanced_search.operator_label')) %>
           <%= select_tag('op[]', options_for_select(Search.get_boolean_opts, @search[:op][0]), disabled: true, :id => "op0", :class=> 'form-control hidden') %>
           <%= hidden_field_tag('op[]','', :id => 'op_') %>
         </div>
-        <div class="col-sm-2 form-group">
+        <div class="col-sm-2 form-group mb-0">
           <%= label_tag(:"field0", t('search-field'),:class => 'sr-only') %>
           <%= select_tag('field[]', options_for_select(field_options, @search[:field][0]), :id=> "field0", :class=> 'form-control custom-search') %>
         </div>
-        <div class="col-sm-8 form-group">
+        <div class="col-sm-8 form-group mb-0">
           <%= label_tag(:"q0", t('navbar.search_placeholder'),:class => 'sr-only') %>
           <%= text_field_tag('q[]', @search[:q][0], :placeholder =>  t('navbar.search_placeholder'), :id => "q0",
-                             :class=> 'form-control fill-column js-search-box') %>
+                            :class=> 'form-control fill-column js-search-box') %>
         </div>
-        <div class="col-sm-2 form-group" id="submit_div">
-          <button id="submit_search" class="btn btn-primary" type="submit" name="commit" data-disable-with="Search">
+        <div class="col-sm-2 form-group mb-0" id="submit_div">
+          <button class="btn btn-primary" type="submit" name="commit" data-disable-with="Search">
             <%= t('actions.search') %>
           </button>
         </div>
       </div>
     <% end %>
   </div>
-  <div class="col-xs-4 simple-search-link">
+  <div class="col-4 ml-auto">
     <ul class="list-inline">
       <li class="nav-item"><a href="/search">Advanced search</a></li>
     </ul>
   </div>
-</div>
+</section>

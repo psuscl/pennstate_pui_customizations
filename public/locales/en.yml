@@ -5,12 +5,11 @@ en:
     welcome_page_title: Welcome
     welcome_head: Penn State University Libraries Archival Collections
     welcome_message: ""
-    announcement: >
-      For the latest COVID-19 news and information, visit Penn State's <a href="https://virusinfo.psu.edu/">Coronavirus Information website</a>.
+    announcement: We're testing v4.0.0 right now. Some things might be broken!
   actions:
     hierarch: Request Materials
     print: Print PDF
-    view_in_catalog: View in Catalog
+    view_in_catalog: View In Catalog
   search_results:
     results_head: "<strong>%{start} - %{end}</strong> of <strong>%{total}</strong>"
     one_entry: "<strong>%{total}</strong> entry found"
@@ -20,3 +19,10 @@ en:
       You may review the contents of the collection here. When you see an item or items that you would like to consult in the reading room, click on the 'Request This' button to add them to your My Requests cart above. When you are finished, click on "My Requests" to review and submit your requests for the Research Services team to review.
     inventory_text: >
       Below is a list of containers found in this collection. You may click on any of them in order to learn more about their contents and how to request the material.
+  sidebar_menu_items:
+    comp_id: Collection ID
+    ark_url: ARK
+    permalink: Permalink
+    catkey: Catalog ID
+    object_id: Object ID
+    breadcrumbs: Breadcrumbs

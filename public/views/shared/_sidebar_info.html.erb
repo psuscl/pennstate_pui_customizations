@@ -1,57 +1,62 @@
+<% 
+  sidebar_info_items = {}
+
+  if result.kind_of?(Resource)
+    sidebar_info_items['comp_id'] = display_component_id(result, props.fetch(:infinite_item, false))
+
+    if result['json'].has_key?('user_defined')
+      if result['json']['user_defined']['string_1']
+        sidebar_info_items['catkey'] = result['json']['user_defined']['string_1']
+      end
+    end
+
+    unless result.ead_location.blank?
+      sidebar_info_items['ark_url'] = result.ead_location
+      sidebar_info_items['permalink'] = "https://arks.libraries.psu.edu/#{result.ead_location}"
+    end
+    
+  else
+    if result.is_a?(DigitalObject)
+      sidebar_info_items['object_id'] = display_component_id(result, props.fetch(:infinite_item, false))
+    end
+  end
+
+%>
+
 <div class="dropdown pull-right">
-  <button id="collectionInfoDropdown" class="dropdown-toggle sidebar-info-dropdown" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <i class="fa fa-info-circle"></i> <i class="fa fa-caret-down fa-icon"></i>
+  <button id="collectionInfoDropdown" class="dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="fa fa-info-circle"></i>
     <span class="sr-only">View collection information</span>
   </button>
-  <div class="dropdown-menu dropdown-menu-right sidebar-info-dropdown-menu">
-    <% 
-      comp_id = display_component_id(result, props.fetch(:infinite_item, false))
-
-      if result.kind_of?(Resource)
-        ark_url = "https://arks.libraries.psu.edu/#{result.ead_location}"
-        
-        if result['json'].has_key?('user_defined')
-          if result['json']['user_defined']['string_1']
-              catkey = result['json']['user_defined']['string_1']
-          end
-        end
-      end
-    %>
-
+  <div class="dropdown-menu dropdown-menu-right sidebar-dropdown-menu">
     <div class="sidebar-info-dropdown-table">
-      <% if result.kind_of?(Resource) %>
-        <div class="row">
-          <div class="col-xs-6 property">Collection ID</div>
-          <div class="col-xs-6 value"><%= comp_id %></div>
-        </div>
-        <% if catkey %>
-          <div class="row">
-            <div class="col-xs-6 property">Catalog record</div>
-            <div class="col-xs-6 value"><a href="https://catalog.libraries.psu.edu/<%= catkey %>"><%= catkey %></a></div>
-          </div>
-        <% end %>
-        <% unless @result.ead_location.blank? %>
-          <div class="row">
-            <div class="col-xs-6 property">ARK</div>
-            <div class="col-xs-6 value"><%= @result.ead_location %></div>
-          </div>
-        <% end %>
-        <% unless @result.ead_location.blank? %>
-          <div class="row">
-            <div class="col-xs-12 property">Permalink</div>
-            <div class="col-xs-12 value"><a href="<%= ark_url %>"><%= ark_url %></a></div>
+      <% if result.kind_of?(Resource) || result.is_a?(DigitalObject) %>
+        <% sidebar_info_items.each do |prop, val| %>
+          <div class="dropdown-item-text">
+            <div class="row">
+              <div class="col-12 font-weight-bold"><%= t("sidebar_menu_items.#{prop}") %></div>
+              <% if prop == 'permalink' %>
+                <div class="col-12"><a href="<%= val %>"><%= val %></a></div>
+              <% else %>
+                <div class="col-12"><%= val %></div>
+              <% end %>
+            </div>
           </div>
         <% end %>
       <% else %>
         <% if result.is_a?(DigitalObject) %>
-          <div class="row">
-            <div class="col-xs-12 property">Object ID</div>
-            <div class="col-xs-12 value"><%= comp_id %></div>
-          </div>
+          <% sidebar_info_items.each do |prop, val| %>
+            <div class="dropdown-item-text">
+              <div class="row">
+                <div class="col-12 font-weight-bold"><%= t("sidebar_menu_items.#{prop}") %></div>
+                <div class="col-12"><%= val %></div>
+              </div>
+            </div>
+          <% end %>
         <% else %>
-          <div class="row">
-            <div class="col-xs-62 property">Breadcrumbs</div>
-            <div class="col-xs-62 value"><%= render partial: 'shared/breadcrumbs' %></div>
+          <div class="dropdown-item-text">
+            <div class="col-12 font-weight-bold"><%= t('sidebar_menu_items.breadcrumbs') %></div>
+            <div class="col-12"><%= render partial: 'shared/breadcrumbs' %></div>
           </div>
         <% end %>
       <% end %>

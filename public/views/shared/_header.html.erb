@@ -1,77 +1,21 @@
-<% if AppConfig[:display_announcement] %>
-  <section id="announcement" class="announcement container-fluid bg-warning">
-    <div class="row align-items-center">
-      <div class="col-xs-12">
-        <p class="text-center text-announcement">
-          <i class="fa fa-bullhorn"></i> <%= t('brand.announcement').html_safe %>
-        </p>
-      </div>
-    </div>
-  </section>
-<% end %>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="header">
-  <div class="container-fluid">
-    <div class="navbar-brand col-xs-12">
-      <div class="skipnav">
-        <a href="#maincontent" class="sr-only sr-only-focusable">Skip to Main Content</a>
-      </div>
-      <a title="The Pennsylvania State University Libraries" href="https://libraries.psu.edu">
-        <img class="img-fluid" alt="Penn State University Libraries logo" src="<%= asset_url(AppConfig[:pui_branding_img]) %>" />
+<section id="header" class="bg-dark">
+  <div class="d-flex flex-row align-items-center px-4">
+    <div class="d-md-block d-none">
+      <a title="<%= AppConfig[:pui_branding_img_alt_text] %>" href="https://libraries.psu.edu">
+        <img class="logo img-fluid" src="<%= asset_path(AppConfig[:pui_branding_img]) %>" alt="<%= AppConfig[:pui_branding_img_alt_text] %>" />
       </a>
-      <a class="site-title" href="/">
+    </div>
+    <div class="p-2 site-title">
+      <a href="<%= AppConfig[:public_proxy_url] %>">
         <%= t('brand.header_title') %>
       </a>
     </div>
-    <ul class="navbar-nav nav">
-      <li class="dropdown nav-item">
-        <a class="dropdown-toggle submenu nav-link" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" tabindex="0">
-          <span>Browse</span>
-          <i class="fa fa-caret-down fa-icon"></i>
-        </a>
-        <ul class="dropdown-menu">
-          <% $MAIN_MENU.each do |link| %>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
-            </li>
-          <% end %>
-        </ul>
-      </li>
-      <% if AppConfig[:plugins].include?('request_list') %>
-        <li class="nav-item">
-          <a class="nav-link" id="request_list_menu_item" href="/plugin/request_list/pennstate"><%= t('plugin.request_list.menu_label') %>
-            <span class="badge" id="rl-badge-count"></span>
-          </a>
-        </li>
+    <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
+      <% if File.exists?(template) %>
+        <!-- Begin plugin layout -->
+        <%= render :inline => File.read(template) %>
+        <!-- End plugin layout -->
       <% end %>
-      <li class="nav-item">
-        <a class="nav-link" href="https://aeon.libraries.psu.edu">My Account</a>
-      </li>
-      <% unless AppConfig[:pui_hide][:search_tab] %>
-        <li class="nav-item">
-          <a class="nav-link" href="<%=  app_prefix('/search?reset=true') %>" title="<%= I18n.t('search_tab', :target => t('archive._plural'))%>">
-            <span class="fa fa-search" aria-hidden="true"></span>
-            <span class="sr-only"><%= I18n.t('search_tab', :target => t('archive._plural')) %></span>
-          </a>
-        </li>
-      <% end %>
-    </ul>
+    <% end %>
   </div>
-</nav>
-<% if !AppConfig[:hide_from_simple_search].include?(controller_name) %>
-  <section id="simple_search" class="navbar-search navbar navbar-expand-md navbar-light bg-light">
-    <div class="container-fluid">
-      <%= render partial: 'shared/simple_search', locals: {
-        :search_url => "/search",
-        :title => t('archive._plural'),
-        :field_options => [
-              ["#{t('search_results.filter.fullrecord')}",''],
-              ["#{t('search_results.filter.title')}",'title'],
-              ["#{t('search_results.filter.creators')}",'creators_text'],
-              ["#{t('search_results.filter.subjects')}",'subjects_text'],
-              ["#{t('search_results.filter.notes')}", 'notes'],
-              ["#{t('search_results.filter.identifier')}", 'four_part_id']
-             ]
-      } %>
-    </div>
-  </section>
-<% end %>
+</section>
