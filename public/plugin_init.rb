@@ -22,6 +22,3 @@ end
 
 # display announcement
 AppConfig[:display_announcement] = true
-
-# show favicon (turn this back on when the rendering issues are fixed)
-AppConfig[:pui_show_favicon] = false
