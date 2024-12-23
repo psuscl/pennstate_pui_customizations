@@ -1,3 +1,9 @@
+# enable/disable Matomo analytics
+AppConfig[:matomo_enabled] = true
+
+# display announcement
+AppConfig[:display_announcement] = false
+
 # hide top-level record types from navigation
 AppConfig[:pui_hide][:accessions] = true
 AppConfig[:pui_hide][:subjects] = true
@@ -19,6 +25,3 @@ Rails.application.config.after_initialize do
     end
   end
 end
-
-# display announcement
-AppConfig[:display_announcement] = true
