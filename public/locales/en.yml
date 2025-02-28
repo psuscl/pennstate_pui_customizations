@@ -5,7 +5,8 @@ en:
     welcome_page_title: Welcome
     welcome_head: Penn State University Libraries Archival Collections
     welcome_message: ""
-    announcement: We're testing v4.0.0 right now. Some things might be broken!
+    announcement: >
+      📢 This is Penn State's ArchivesSpace testing site. Some things might be broken!
   actions:
     hierarch: Request Materials
     print: Print PDF
