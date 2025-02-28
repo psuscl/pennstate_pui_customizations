@@ -1,8 +1,8 @@
 # enable/disable Matomo analytics
-AppConfig[:matomo_enabled] = true
+AppConfig[:matomo_enabled] = false
 
 # display announcement
-AppConfig[:display_announcement] = false
+AppConfig[:display_announcement] = true
 
 # hide top-level record types from navigation
 AppConfig[:pui_hide][:accessions] = true

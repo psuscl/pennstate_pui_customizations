@@ -42,6 +42,7 @@
     <%= render partial: 'resources/resource_alltabs' %>
 
     <h2><%= t('actions.hierarch') %></h2>
+    <p class="resources-infinite-text"><%= t('messages.infinite_text') %></p>
     <div class="row">
       <%= render partial: 'resources/infinite_records', locals: {
         num_records: num_records,

@@ -1,0 +1,15 @@
+<% ancestors = result.raw.fetch('_resolved_ancestors', []) %>
+
+<% unless ancestors.nil? %>
+  <div class="result_context">
+    <%= render partial: 'shared/result_breadcrumbs_repo', locals: {:result => result} %>
+    <% ancestors.each do |uri, data| %>
+      <% ancestor_type = uri.split('/')[3].chop %>
+      <%= render partial: 'shared/result_breadcrumbs_ancestor', locals: {
+        :span_class => "${ancestor_type}_name",
+        :badge_type => ancestor_type,
+        :body => data[0]['title'],
+        :url => app_prefix(uri) } %>
+    <% end %>
+  </div>
+<% end %>

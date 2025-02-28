@@ -1,3 +1,8 @@
+<!-- display announcement, if we have one -->
+<% if AppConfig[:display_announcement] %>
+  <%= render partial: 'shared/announcement' %>
+<% end %>
+
 <section id="header" class="bg-dark">
   <div class="d-flex flex-row align-items-center px-4">
     <div class="d-md-block d-none">

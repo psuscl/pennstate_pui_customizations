@@ -54,11 +54,9 @@
 	<%= render partial: 'shared/skipnav' %>
 
 	<div class="container-fluid no-pad">
-		<% if AppConfig[:display_announcement] %>
-			<%= render partial: 'shared/announcement' %>
-		<% end %>
 		<%= render partial: 'shared/header' %>
 		<%= render partial: 'shared/navigation' %>
+		<!-- Begin plugin layout -->
 		<% if !AppConfig[:hide_from_simple_search].include?(controller_name) %>
 			<%= render partial: 'shared/simple_search', locals: {
 				:search_url => "/search",
@@ -73,6 +71,7 @@
 				]
 			} %>
 		<% end %>
+		<!-- End plugin layout -->
 	</div>
 
 	<section id="content" class="container-fluid mt-2 pt-2 flex-grow-1">
