@@ -6,7 +6,11 @@ body { font-family: "Open Sans", sans-serif; }
 .bg-light { background-color: #f5f5f5 !important; }
 
 /* announcement styles */
-.announcement { border-bottom: 3px solid #6c757d; }
+.announcement { 
+  font-weight:bold;
+  border-bottom: 3px solid #6c757d;
+}
+
 .announcement a {
   color: #000;
   text-decoration: underline;
