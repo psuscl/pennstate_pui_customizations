@@ -39,11 +39,6 @@
   <div class="col-12 col-lg-8 px-3">
     <%= render partial: 'resources/resource_alltabs' %>
 
-    <%= render partial: 'shared/digital', locals: {
-      :dig_objs => @dig,
-      record: @result,
-      n_digital_objects: @n_digital_objects
-    } %>
     <%= render partial: 'shared/record_innards' %>
   </div>
 </div>
