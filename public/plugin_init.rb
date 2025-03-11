@@ -4,12 +4,6 @@ AppConfig[:matomo_enabled] = false
 # display announcement
 AppConfig[:display_announcement] = true
 
-# hide top-level record types from navigation
-AppConfig[:pui_hide][:accessions] = true
-AppConfig[:pui_hide][:subjects] = true
-AppConfig[:pui_hide][:agents] = true
-AppConfig[:pui_hide][:classifications] = true
-
 # branding image and favicon
 AppConfig[:pui_branding_img] = 'assets/pennstate.png'
 AppConfig[:pui_branding_img_alt_text] = 'Penn State University Libraries'
