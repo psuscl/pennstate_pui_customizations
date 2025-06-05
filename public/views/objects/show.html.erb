@@ -1,21 +1,57 @@
+<%
+  if @result.instance_of?(ArchivalObject) || @has_children
+    if @result.kind_of?(DigitalObject)
+      heading_text = t('dig_cont_arr')
+    else
+      heading_text = t('cont_arr')
+    end
+  end
+%>
+
 <a name="main" title="<%= t('internal_links.main') %>"></a>
 
-<div id="main-content" class="row objects">
-  <div id="sidebar" class="objects-sidebar col-xs-12 col-sm-4">
-    <%= render partial: 'objects/sidebar', locals: {:result => @result, :props => {:full => true}} %>
-  </div>
+<div class="row flex-column flex-lg-row" id="main-content">
+  <div id="sidebar" class="h-max p-0 col-12 col-lg-4 sidebar sidebar-container">
+    <div class="p-3 bg-light">
+      <div class="sidebar-title">
+        <%= render partial: 'shared/sidebar_info', locals: {:result => @result, :props => {:full => true}} %>
+        <h1>
+          <a href="<%= app_prefix(resource_base_url(@result)) %>"><%= @result.parse_full_title(true).html_safe %></a>
+        </h1>
+      </div>
 
-  <div class="objects-content col-xs-12 col-sm-8">
-    <% if  defined?(comp_id) && !comp_id && !@result['json']['ref_id'].blank? %>
-      <span class='ref_id'>[<%=  t('archival_object._public.header.ref_id') %>: <%= @result['json']['ref_id'] %>]</span>
-    <% end %>
+      <h3 class="record-type-badge <%= @result.primary_type %>">
+        <i class="<%= icon_for_type(@result.primary_type) %>"></i>&#160;<%= t("#{@result.primary_type}._singular") %> <% if @result.container_summary_for_badge %> &mdash; <%= @result.container_summary_for_badge %><% end %>
+      </h3>
 
-    <div class="row">
-      <div class="col-xs-12">
-        <%= render partial: 'shared/record_innards' %>
+      <div class="page_actions">
+        <%= render partial: 'shared/page_actions', locals: {:record => @result, :title => @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
       </div>
     </div>
+
+    <% if @result.instance_of?(ArchivalObject) %>
+      <hr>
+      <% if AppConfig[:pui_search_collection_from_archival_objects] %>
+        <div class="p-2">
+          <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result.resource_uri, :action_text => "#{t('actions.search_in', :type => t('resource._singular'))}"} %>
+        </div>
+      <% end %>
+      <%= render partial: 'shared/children_tree', :locals => {:heading_text => heading_text, :root_node_uri => @result.root_node_uri, :current_node_uri => @result.uri} %>
+    <% end %>
+
+  </div>
+  <div class="col-12 col-lg-8 px-3">
+    <% if defined?(comp_id) && !comp_id && !@result['json']['ref_id'].blank? %>
+      <span class='ref_id'>[<%=  t('archival_object._public.header.ref_id') %>: <%= @result['json']['ref_id'] %>]</span>
+    <% end %>
+    <%= render partial: 'shared/digital', locals: {:dig_objs => @dig, record: @result} %>
+    <%= render partial: 'shared/record_innards' %>
   </div>
 </div>
 
+<script>
+  document.querySelectorAll("[data-js='readmore']").forEach((el) => {
+    new ReadMoreNotes(el);
+  });
+</script>
 <%= render partial: 'shared/modal_actions' %>

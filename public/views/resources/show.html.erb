@@ -1,26 +1,52 @@
 <a name="main" title="<%= t('internal_links.main') %>"></a>
-<div id="main-content" class="row resources">
-  <div class="col-xs-12" id="info_row">
-    <% unless defined?(@no_statement) || !defined?(@search) %>
-      <div class="searchstatement"><%= @search[:search_statement].html_safe %></div>
-    <% end %>
-  </div>
-  <div id="sidebar" class="resources-sidebar col-xs-12 col-sm-4">
-    <%= render partial: 'resources/sidebar', locals: {:result => @result, :props => {:full => true}} %>
-  </div>
+<div id="search_row" class="row">
+  <% unless defined?(@no_statement) || !defined?(@search) %>
+    <div class="searchstatement"><%= @search[:search_statement].html_safe %></div>
+  <% end %>
+</div>
 
-  <div class="resources-content col-xs-12 col-sm-8">
+<div class="row flex-column flex-lg-row" id="main-content">
+  <div id="sidebar" class="h-max p-0 col-12 col-lg-4 sidebar sidebar-container">
+    <div class="p-3 bg-light">
+      <div class="sidebar-title">
+        <%= render partial: 'shared/sidebar_info', locals: {:result => @result, :props => {:full => true}} %>
+        <h1>
+          <a href="<%= app_prefix(resource_base_url(@result)) %>"><%= @result.parse_full_title(true).html_safe %></a>
+        </h1>
+      </div>
+
+      <h3 class="record-type-badge <%= @result.primary_type %>">
+        <i class="<%= icon_for_type(@result.primary_type) %>"></i>&#160;<%= t("#{@result.primary_type}._singular") %> <% if @result.container_summary_for_badge %> &mdash; <%= @result.container_summary_for_badge %><% end %>
+      </h3>
+
+      <div class="page_actions">
+        <%= render partial: 'shared/page_actions', locals: {:record => @result, :title => @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
+      </div>
+    </div>
+
+    <% if defined?(@filters) && defined?(@search) %>
+      <%= render partial: 'shared/facets' %>
+    <% end %>
+
+    <hr>
+
+    <div class="p-2">
+      <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => "#{t('actions.search_in', :type => t('resource._singular'))}"} %>
+    </div>
+    
+    <%= render partial: 'shared/children_tree', :locals => {:heading_text => t('cont_arr'), :root_node_uri => @result.uri, :current_node_uri => @result.uri} %>
+  </div>
+  <div class="col-12 col-lg-8 px-3">
+    <%= render partial: 'resources/resource_alltabs' %>
+
     <%= render partial: 'shared/record_innards' %>
   </div>
 </div>
 
-<script type="text/javascript">
-  let newSimpleRenderer = new SimpleRenderer();
-  newSimpleRenderer.nodeTemplate = $('<div class="table-row"> ' +
-                              '  <div class="table-cell drag-handle"></div>' +
-                              '  <div class="table-cell title"><button class="expandme" aria-expanded="false"><i class="expandme-icon glyphicon glyphicon-chevron-right" /></button></div>' +
-                              '</div>');
-  console.log(newSimpleRenderer);
+<script>
+  document.querySelectorAll("[data-js='readmore']").forEach((el) => {
+    new ReadMoreNotes(el);
+  });
 </script>
 
 <%= render partial: 'shared/modal_actions' %>

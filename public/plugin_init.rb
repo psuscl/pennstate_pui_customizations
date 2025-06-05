@@ -1,47 +1,22 @@
-AppConfig[:matomo_enabled] = true
+# enable/disable Matomo analytics
+AppConfig[:matomo_enabled] = false
 
-unless AppConfig.has_key? :pui_classification_title_only
-  AppConfig[:pui_classification_title_only] = false
-end
+# display announcement
+AppConfig[:display_announcement] = true
 
-unless AppConfig.has_key? :display_announcement
-  AppConfig[:display_announcement] = false
-end
-
+# branding image and favicon
 AppConfig[:pui_branding_img] = 'assets/pennstate.png'
 AppConfig[:pui_branding_img_alt_text] = 'Penn State University Libraries'
+AppConfig[:pui_show_favicon] = true
 
+# controller types to hide from simple search
 AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'objects', 'subjects', 'agents', 'classifications']
-AppConfig[:pui_page_custom_actions] = [
-  {
-    'record_type' => ['resource'],
-    'erb_partial' => 'shared/view_catalog_action'
-  },
-  {
-    'record_type' => ['resource'],
-    'erb_partial' => 'shared/request_materials_action'
-  }
-]
 
-# various overrides
+# make sure EAD Location appears in resource records
 Rails.application.config.after_initialize do
   class Resource
     def ead_location
       @json['ead_location']
-    end
-  end
-
-  class ResourceController
-    def waypoints
-      search_opts = {
-        'resolve[]' => ['top_container_uri_u_sstr:id', 'digital_object_uris:id']
-      }
-      results = archivesspace.search_records(params[:urls], search_opts, true)
-  
-      render :json => Hash[results.records.map {|record|
-                             @result = record
-                             [record.uri,
-                              render_to_string(:partial => 'infinite_item')]}]
     end
   end
 end
