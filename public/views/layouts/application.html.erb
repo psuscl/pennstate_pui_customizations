@@ -33,12 +33,6 @@
 		<% end %>
 	<% end %>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 
 <body class="min-h-screen d-flex flex-column">
@@ -52,9 +46,9 @@
 	<% end %>
 
 	<%= render partial: 'shared/skipnav' %>
+	<%= render partial: 'shared/header' %>
 
-	<div class="container-fluid no-pad">
-		<%= render partial: 'shared/header' %>
+	<div class="container-fluid no-pad full-bleed full-bleed--limestone-light">
 		<%= render partial: 'shared/navigation' %>
 		<!-- Begin plugin layout -->
 		<% if !AppConfig[:hide_from_simple_search].include?(controller_name) %>
