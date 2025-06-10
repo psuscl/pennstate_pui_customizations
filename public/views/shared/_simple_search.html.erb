@@ -1,5 +1,5 @@
 <section id="simple_search" class="d-flex flex-row row pt-2 pb-1 align-items-center bg-light">
-  <div class="col-8">
+  <div class="col-md-8">
     <% @search = Search.new unless defined?(@search) %>
     <%= form_tag(app_prefix("#{search_url}"), method: 'get', :id => 'simple_search') do %>
       <div class="form-row" id="search_row_0">
