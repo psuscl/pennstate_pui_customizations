@@ -29,18 +29,6 @@
 
             <div class="header--nav-additional flex-fill collapse navbar-collapse justify-content-md-end"
               id="navbarSupportedContent">
-
-            </div>
-
-            <div class="header--nav-search ms-auto">
-
-            </div>
-          </div>
-        </div>
-
-        <div class="container-fluid nav-main-menu-container">
-          <div class="d-flex w-100 header-bottom">
-            <div class="region region-nav-main">
               <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
                 <% if File.exists?(template) %>
                   <!-- Begin plugin layout -->
@@ -48,6 +36,27 @@
                   <!-- End plugin layout -->
                 <% end %>
               <% end %>
+            </div>
+
+            <div class="header--nav-search ms-auto">
+              <% unless AppConfig[:pui_hide][:search_tab] %>
+                <a class="btn btn-outline-light border-0 py-1 px-2" href="<%=  app_prefix('/search?reset=true') %>" title="<%= I18n.t('search_tab', :target => t('archive._plural'))%>">
+                  <i class="bi bi-search" aria-hidden="true"></i>
+                  <span class="sr-only"><%= I18n.t('search_tab', :target => t('archive._plural')) %></span>
+                </a>
+              <% end %>
+              <%= render partial: 'shared/mobile_navigation' %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="container-fluid nav-main-menu-container">
+          <div class="d-flex w-100 header-bottom">
+            <div class="d-none d-md-block">
+              <div class="region region-nav-main">
+                <%= render partial: 'shared/navigation' %>
+              </div>
             </div>
           </div>
         </div>

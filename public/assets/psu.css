@@ -12,11 +12,24 @@ body {
 }
 
 /* Keeping the workmark in line with logo longer. */
-@media (min-width: 576px) and (max-width: 767px) {
+@media (min-width: 650px) and (max-width: 767px) {
   .header-mark {
     align-items: flex-start;
     flex-direction: row;
   }
+}
+
+.dropdown-menu>li>a {
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #333;
+  white-space: nowrap;
+}
+
+.dropdown-menu>li>a:focus {
+  background-color: #e4e5e7;
 }
 
 /* Forcing the container-fluid behavior to PSU theme. Slightly increasing
@@ -34,23 +47,6 @@ body {
   }
 }
 
-/* Request list style overrides */
-.region.region-nav-main {
-  margin-left: -.5rem;
-  font-size: 16px;
-}
-
-.header-mark.navbar-brand {
-  padding-bottom: 0;
-}
-
-@media (min-width: 768px) {
-  .region.region-nav-main {
-    margin-left: -.76rem;
-    font-size: 18px;
-  }
-}
-
 .rl-navbar .nav-item .nav-link {
   color: #fff;
 }
@@ -58,4 +54,45 @@ body {
 .rl-navbar .nav-item .nav-link:hover,
 .rl-navbar .nav-item .nav-link:active {
   color: #cce9ff;
+}
+
+/* tree styles */
+.largetree-container { background-color: #fff; }
+
+.largetree-container .table.root div.table-row:first-child {
+  background-color: #fff;
+  font-weight: bold;
+}
+
+.largetree-container .indentor { background-color: #fff; }
+.largetree-container .table-cell { white-space: inherit; }
+
+.largetree-node { font-size: .8rem; }
+.largetree-node.indent-level-1 { font-size: 1rem; }
+
+.indent-level-1 .table-cell { padding-left: 20px; }
+.indent-level-2 .table-cell { padding-left: 20px; }
+.indent-level-3 .table-cell { padding-left: 40px; }
+.indent-level-4 .table-cell { padding-left: 60px; }
+.indent-level-5 .table-cell { padding-left: 80px; }
+.table-cell > button { margin-left: -20px; }
+
+.infinite-record-record { background-image: none; }
+
+/* search result styles */
+.recordrow {
+  border: none;
+  border-bottom: 1px dotted #e4e5e7;
+}
+
+.search-results h3 {
+  font-size: 1.25rem;
+}
+
+.filter {
+  border: 1px solid #e4e5e7;
+}
+
+.searchstatement .no-bullets {
+  margin-bottom: 0;
 }

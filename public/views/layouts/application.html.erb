@@ -49,7 +49,6 @@
 	<%= render partial: 'shared/header' %>
 
 	<div class="container-fluid no-pad full-bleed full-bleed--limestone-light">
-		<%= render partial: 'shared/navigation' %>
 		<!-- Begin plugin layout -->
 		<% if !AppConfig[:hide_from_simple_search].include?(controller_name) %>
 			<%= render partial: 'shared/simple_search', locals: {
