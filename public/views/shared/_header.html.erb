@@ -40,16 +40,14 @@
 
         <div class="container-fluid nav-main-menu-container">
           <div class="d-flex w-100 header-bottom">
-            <div class="d-none d-md-block">
-              <div class="region region-nav-main">
-                <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
-                  <% if File.exists?(template) %>
-                    <!-- Begin plugin layout -->
-                    <%= render :inline => File.read(template) %>
-                    <!-- End plugin layout -->
-                  <% end %>
+            <div class="region region-nav-main">
+              <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
+                <% if File.exists?(template) %>
+                  <!-- Begin plugin layout -->
+                  <%= render :inline => File.read(template) %>
+                  <!-- End plugin layout -->
                 <% end %>
-              </div>
+              <% end %>
             </div>
           </div>
         </div>

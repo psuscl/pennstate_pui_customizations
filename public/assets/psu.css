@@ -1,3 +1,61 @@
 h1 {
   margin-bottom: 1.5rem;
 }
+
+body {
+  --bs-border-width: 1px;
+}
+
+.form-control {
+  appearance: auto;
+  -webkit-appearance: auto;
+}
+
+/* Keeping the workmark in line with logo longer. */
+@media (min-width: 576px) and (max-width: 767px) {
+  .header-mark {
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}
+
+/* Forcing the container-fluid behavior to PSU theme. Slightly increasing
+  max-width. */
+.container-fluid {
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
+  max-width: calc(1420px + 6rem);
+}
+
+@media (min-width: 768px) {
+  .container-fluid {
+    padding-left: 3rem !important;
+    padding-right: 3rem !important;
+  }
+}
+
+/* Request list style overrides */
+.region.region-nav-main {
+  margin-left: -.5rem;
+  font-size: 16px;
+}
+
+.header-mark.navbar-brand {
+  padding-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .region.region-nav-main {
+    margin-left: -.76rem;
+    font-size: 18px;
+  }
+}
+
+.rl-navbar .nav-item .nav-link {
+  color: #fff;
+}
+
+.rl-navbar .nav-item .nav-link:hover,
+.rl-navbar .nav-item .nav-link:active {
+  color: #cce9ff;
+}
