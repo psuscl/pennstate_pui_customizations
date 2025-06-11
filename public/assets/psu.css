@@ -1,14 +1,43 @@
+/* PSU Theme style alterations work with archivesspace */
+body {
+  --bs-border-width: 1px;
+}
+
 h1 {
   margin-bottom: 1.5rem;
 }
 
-body {
-  --bs-border-width: 1px;
+.h1, h1 {
+    font-size: 2rem;
+}
+
+.h2, h2,
+.sidebar-title h1 {
+  font-size: 1.5rem;
+}
+
+.h3, h3,
+.accordion h2.card-title {
+  font-size: 1.25rem;
+}
+
+span.component {
+  font-weight: 400;
 }
 
 .form-control {
   appearance: auto;
   -webkit-appearance: auto;
+}
+
+/* Apply primary styles to default buttons */
+.btn-default {
+  --bs-btn-bg: #005fa9;
+  --bs-btn-color: #fff;
+  --bs-btn-border-color: #005fa9;
+  --bs-btn-hover-bg: #001e44;
+  --bs-btn-hover-border-color: #001e44;
+  --bs-btn-hover-color: #fff;
 }
 
 /* Keeping the workmark in line with logo longer. */
@@ -83,16 +112,61 @@ body {
 .recordrow {
   border: none;
   border-bottom: 1px dotted #e4e5e7;
+  padding: 1rem 0.635rem;
 }
 
 .search-results h3 {
   font-size: 1.25rem;
 }
 
-.filter {
+.filters li {
+  margin-bottom: .5rem;
+}
+
+.filters .filter {
+  font-size: 1rem;
   border: 1px solid #e4e5e7;
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.filters .filter:hover {
+  border-color: #333;
+}
+
+/* Duplicating stretched-link bootstrap functionality */
+.filters .filter a:after {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: auto;
+  content: "";
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .searchstatement .no-bullets {
   margin-bottom: 0;
+}
+
+.sidebar-container {
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.075) 0px 2px 4px 0px;
+}
+
+.sidebar-container > .bg-light {
+  border-radius: 8px 8px 0 0;
+}
+
+.sidebar-container hr {
+  margin-top: 0
+}
+
+.sidebar-container > :not(.filters):not(hr):not(.bg-light) {
+  padding-left: .75rem;
+  padding-left: .75rem;
 }
