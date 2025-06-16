@@ -1,60 +1,59 @@
+<a name="main" title="<%= t('internal_links.main') %>"></a>
+
 <%
   tree_waypoint_size = Rails.configuration.infinite_tree_waypoint_size
   records_waypoint_size = Rails.configuration.infinite_records_waypoint_size
   num_records = @ordered_records.count
 %>
 
-<a name="main" title="<%= t('internal_links.main') %>"></a>
-
-<div class="row flex-column flex-lg-row" id="main-content">
-  <div id="sidebar" class="h-max p-0 col-12 col-lg-4 sidebar sidebar-container">
-    <div class="p-3 bg-light">
-      <div class="sidebar-title">
-        <%= render partial: 'shared/sidebar_info', locals: {:result => @result, :props => {:full => true}} %>
-        <h1>
-          <a href="<%= app_prefix(resource_base_url(@result)) %>"><%= @result.parse_full_title(true).html_safe %></a>
-        </h1>
-      </div>
-
-      <h3 class="record-type-badge <%= @result.primary_type %>">
-        <i class="<%= icon_for_type(@result.primary_type) %>"></i>&#160;<%= t("#{@result.primary_type}._singular") %> <% if @result.container_summary_for_badge %> &mdash; <%= @result.container_summary_for_badge %><% end %>
-      </h3>
-
-      <div class="page_actions col-12 col-lg-6">
-        <%= render partial: 'shared/page_actions', locals: {:record => @result, :title =>  @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
-      </div>
+<div id="main-content">
+  <div class="row">
+    <div class="col-12">
+      <h1><%= t('actions.hierarch') %> &mdash; <%= @result.parse_full_title(true).html_safe %></h1>
+      <p class="resources-infinite-text"><%= t('messages.infinite_text') %></p>
+      <%= render partial: 'resources/resource_alltabs' %>
     </div>
-
-    <% if defined?(@filters) && defined?(@search) %>
-      <%= render partial: 'shared/facets' %>
-    <% end %>
-
-    <div class="p-2">
-      <% if AppConfig[:pui_search_collection_from_collection_organization] %>
-        <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => t('actions.search_in', :type => t('resource._singular'))} %>
-      <% end %>
-    </div>
-    
-    <%= render partial: 'shared/infinite_tree' %>
   </div>
+  <div class="row">
+    <div id="sidebar" class="sidebar sidebar-container col-12 col-lg-4 infinite-tree-sidebar">  
+      <div class="p-3 bg-light">
+        <div class="sidebar-title">
+          <%= render partial: 'shared/sidebar_info', locals: {:result => @result, :props => {:full => true}} %>
+          <h1>
+            <a href="<%= app_prefix(resource_base_url(@result)) %>"><%= @result.parse_full_title(true).html_safe %></a>
+          <h1>
+        </div>
 
-  <div class="col-12 col-lg-8 px-3">
-    <%= render partial: 'resources/resource_alltabs' %>
+        <h3 class="record-type-badge <%= @result.primary_type %>">
+          <i class="<%= icon_for_type(@result.primary_type) %>"></i>&#160;<%= t("#{@result.primary_type}._singular") %> <% if @result.container_summary_for_badge %> &mdash; <%= @result.container_summary_for_badge %><% end %>
+        </h3>
 
-    <h2><%= t('actions.hierarch') %></h2>
-    <p class="resources-infinite-text"><%= t('messages.infinite_text') %></p>
-    <div class="row">
-      <%= render partial: 'resources/infinite_records', locals: {
-        num_records: num_records,
-        records_waypoint_size: records_waypoint_size
-      } %>
+        <div class="page_actions col-12 col-lg-6">
+          <%= render partial: 'shared/page_actions', locals: {:record => @result, :title =>  @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
+        </div>
+      </div>
+
+      <% if defined?(@filters) && defined?(@search) %>
+        <%= render partial: 'shared/facets' %>
+      <% end %>
+
+      <div class="p-2">
+        <% if AppConfig[:pui_search_collection_from_collection_organization] %>
+          <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => t('actions.search_in', :type => t('resource._singular'))} %>
+        <% end %>
+      </div>
+      
+      <%= render partial: 'shared/infinite_tree' %>
     </div>
 
-    <%= render partial: 'resources/infinite_load_all', locals: {num_records: num_records} %>
+    <%= render partial: 'resources/infinite_records', locals: {
+      num_records: num_records,
+      records_waypoint_size: records_waypoint_size
+    } %>
   </div>
 </div>
 
-
+<%= render partial: 'resources/infinite_load_all', locals: {num_records: num_records} %>
 
 <script>
   const resourceUri = '<%= @result["uri"] %>';
@@ -94,14 +93,14 @@
   */
   function treeClickDelegator(event, tree, records) {
     if (
-      !event.target.classList.contains('expandme') &&
-      !event.target.classList.contains('expandme-icon') &&
-      !event.target.classList.contains('record-title')
+      !event.target.classList.contains('node-expand') &&
+      !event.target.classList.contains('node-expand-icon') &&
+      !event.target.classList.contains('node-title')
     ) return;
 
-    if (event.target.className.includes('expandme')) {
+    if (event.target.className.includes('node-expand')) {
       tree.expandHandler(event);
-    } else if (event.target.classList.contains('record-title')) {
+    } else if (event.target.classList.contains('node-title')) {
       records.treeLinkHandler(event);
     }
   }
