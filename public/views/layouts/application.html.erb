@@ -33,12 +33,6 @@
 		<% end %>
 	<% end %>
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 </head>
 
 <body class="min-h-screen d-flex flex-column">
@@ -52,27 +46,26 @@
 	<% end %>
 
 	<%= render partial: 'shared/skipnav' %>
+	<%= render partial: 'shared/header' %>
 
-	<div class="container-fluid no-pad">
-		<%= render partial: 'shared/header' %>
-		<%= render partial: 'shared/navigation' %>
-		<!-- Begin plugin layout -->
-		<% if !AppConfig[:hide_from_simple_search].include?(controller_name) %>
-			<%= render partial: 'shared/simple_search', locals: {
-				:search_url => "/search",
-				:title => t('archive._plural'),
-				:field_options => [
-				["#{t('search_results.filter.fullrecord')}",''],
-				["#{t('search_results.filter.title')}",'title'],
-				["#{t('search_results.filter.creators')}",'creators_text'],
-				["#{t('search_results.filter.subjects')}",'subjects_text'],
-				["#{t('search_results.filter.notes')}", 'notes'],
-				["#{t('search_results.filter.identifier')}", 'four_part_id']
-				]
-			} %>
-		<% end %>
-		<!-- End plugin layout -->
-	</div>
+	<!-- Begin plugin layout -->
+	<% if !AppConfig[:hide_from_simple_search].include?(controller_name) %>
+		<div class="container-fluid no-pad full-bleed full-bleed--limestone-light">
+		<%= render partial: 'shared/simple_search', locals: {
+			:search_url => "/search",
+			:title => t('archive._plural'),
+			:field_options => [
+			["#{t('search_results.filter.fullrecord')}",''],
+			["#{t('search_results.filter.title')}",'title'],
+			["#{t('search_results.filter.creators')}",'creators_text'],
+			["#{t('search_results.filter.subjects')}",'subjects_text'],
+			["#{t('search_results.filter.notes')}", 'notes'],
+			["#{t('search_results.filter.identifier')}", 'four_part_id']
+			]
+		} %>
+		</div>
+	<% end %>
+	<!-- End plugin layout -->
 
 	<section id="content" class="container-fluid mt-2 pt-2 flex-grow-1">
 		<a name="maincontent" id="maincontent"></a>

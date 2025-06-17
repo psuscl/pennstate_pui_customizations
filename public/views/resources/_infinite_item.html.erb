@@ -2,11 +2,13 @@
   indent_level = @result.raw.fetch('ancestors', []).length
 %>
 <div class="infinite-item infinite-item-indent-<%= indent_level %>">
+  <!-- Begin plugin layout -->
   <% if AppConfig[:plugins].include?("request_list") %>
     <div class="float-right">
       <%= render partial: 'request_list/action_button', locals: {:record => @result} %>
     </div>
   <% end %>
+  <!-- End plugin layout -->
   <div class="information" style="overflow: hidden;">
     <%=
       render partial: 'shared/idbadge', locals: {
@@ -88,7 +90,4 @@
       <% end %>
     <% end %>
   </dl>
-
-  <!-- this is here because of PUI customizations :( -->
-  <%= render partial: 'resources/infinite_breadcrumb', locals: {:result => @result} %>
 </div>

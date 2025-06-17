@@ -1,5 +1,5 @@
-<section id="simple_search" class="d-flex flex-row px-4 py-2 align-items-center bg-light">
-  <div class="col-8">
+<section id="simple_search" class="d-flex flex-row row pt-2 pb-1 align-items-center bg-light">
+  <div class="col-md-8">
     <% @search = Search.new unless defined?(@search) %>
     <%= form_tag(app_prefix("#{search_url}"), method: 'get', :id => 'simple_search') do %>
       <div class="form-row" id="search_row_0">
@@ -8,16 +8,16 @@
           <%= select_tag('op[]', options_for_select(Search.get_boolean_opts, @search[:op][0]), disabled: true, :id => "op0", :class=> 'form-control hidden') %>
           <%= hidden_field_tag('op[]','', :id => 'op_') %>
         </div>
-        <div class="col-sm-2 form-group mb-0">
+        <div class="col-sm-2 form-group mb-1">
           <%= label_tag(:"field0", t('search-field'),:class => 'sr-only') %>
           <%= select_tag('field[]', options_for_select(field_options, @search[:field][0]), :id=> "field0", :class=> 'form-control custom-search') %>
         </div>
-        <div class="col-sm-8 form-group mb-0">
+        <div class="col-sm-8 form-group mb-1">
           <%= label_tag(:"q0", t('navbar.search_placeholder'),:class => 'sr-only') %>
           <%= text_field_tag('q[]', @search[:q][0], :placeholder =>  t('navbar.search_placeholder'), :id => "q0",
                             :class=> 'form-control fill-column js-search-box') %>
         </div>
-        <div class="col-sm-2 form-group mb-0" id="submit_div">
+        <div class="col-sm-2 form-group mb-1" id="submit_div">
           <button class="btn btn-primary" type="submit" name="commit" data-disable-with="Search">
             <%= t('actions.search') %>
           </button>
@@ -25,7 +25,7 @@
       </div>
     <% end %>
   </div>
-  <div class="col-4 ml-auto">
+  <div class="col-md-4 pt-2 ml-auto">
     <ul class="list-inline">
       <li class="nav-item"><a href="/search">Advanced search</a></li>
     </ul>
