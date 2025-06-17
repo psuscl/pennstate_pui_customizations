@@ -87,6 +87,8 @@ span.component {
 
 /* tree styles */
 .largetree-container { background-color: #fff; }
+.largetree-container .table { border-spacing: 1rem; }
+.largetree-container .table.root div.table-row:first-child div.title { padding-left: 0; }
 
 #infinite-tree-container {
   background-color: #fff;
@@ -98,6 +100,7 @@ span.component {
   background-color: #fff;
   font-weight: bold;
 }
+.largetree-container .table.root div.table-row:nth-of-type(2n+1) { background-color: #fff; }
 
 .largetree-container .indentor, .node-expand { background-color: #fff; }
 .largetree-container .table-cell { white-space: inherit; }
@@ -105,6 +108,7 @@ span.component {
 .largetree-node { font-size: .8rem; }
 .largetree-node.indent-level-1 { font-size: 1rem; }
 
+.infinite-item { margin: 1rem; }
 .indent-level-1 .table-cell { padding-left: 20px; }
 .indent-level-2 .table-cell { padding-left: 20px; }
 .indent-level-3 .table-cell { padding-left: 40px; }
@@ -118,6 +122,8 @@ span.component {
   background-color: #fff;
   background-image: none;
 }
+
+.table-row-group > div[id*="archival_object_"] { box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; }
 
 /* search result styles */
 .recordrow {
