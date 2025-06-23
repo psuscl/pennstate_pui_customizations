@@ -125,6 +125,10 @@ span.component {
 
 .table-row-group > div[id*="archival_object_"] { box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; }
 
+/* tree styles to override some things in peripheral.min.css that don't play nice with ASpace tables */
+.table > :not(caption) > * > * { color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1)); }
+.table > .current > * > * { background-color: #effaff; }
+
 /* search result styles */
 .recordrow {
   border: none;
