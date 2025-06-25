@@ -114,7 +114,7 @@ span.component {
 .indent-level-3 .table-cell { padding-left: 40px; }
 .indent-level-4 .table-cell { padding-left: 60px; }
 .indent-level-5 .table-cell { padding-left: 80px; }
-.table-cell > button { margin-left: -20px; }
+.table-cell > button { margin-left: -10px; }
 
 .infinite-record-record { background-image: none; }
 
@@ -124,6 +124,10 @@ span.component {
 }
 
 .table-row-group > div[id*="archival_object_"] { box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px; }
+
+/* tree styles to override some things in peripheral.min.css that don't play nice with ASpace tables */
+.table > .root-row > * > * { color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1)); }
+.table > .current > * > * { background-color: #effaff; }
 
 /* search result styles */
 .recordrow {
