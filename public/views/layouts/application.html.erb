@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="<%= session[:locale] ? session[:locale] : AppConfig[:locale] %>">
+<head>
+	<%# mdc: new stuff, to address IE 10 and earlier issues with Bootstrap %>
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<% if AppConfig[:pui_show_favicon] %><%= render "shared/favicon" %><% end %>
+	<title><%=  (@page_title.blank? ? '' : "#{strip_mixed_content(@page_title)} | ") %><%= t('brand.title') %></title>
+	<%= csrf_meta_tags %>
+
+	<%# block cross-origin refer per https://go-to-hellman.blogspot.com/2015/06/protect-reader-privacy-with-referrer.html %>
+	<% if AppConfig[:pui_block_referrer] %>
+		<meta name="referrer" content="origin-when-cross-origin" />
+	<% end %>
+
+	<script>
+	 var APP_PATH = '<%= PrefixHelper.app_prefix("") %>';
+	 var SHOW_IDENTIFIERS_IN_TREE = <%= AppConfig[:pui_display_identifiers_in_resource_tree] %>;
+	</script>
+
+	<%= javascript_include_tag "#{@base_url}/assets/popper.min.js" %>
+	<%= stylesheet_link_tag    'application.css', media: 'all' %>
+	<%= javascript_include_tag 'application.js' %>
+
+	<%= render partial: 'shared/metadata' %>
+
+	<% ASUtils.find_local_directories('public/views/layout_head.html.erb').each do |template| %>
+		<% if File.exists?(template) %>
+			<!-- Begin plugin layout -->
+			<%= render :inline => File.read(template) %>
+			<!-- End plugin layout -->
+		<% end %>
+	<% end %>
+
+</head>
+
+<body class="min-h-screen d-flex flex-column">
+
+	<% ASUtils.find_local_directories('public/views/body_top.html.erb').each do |template| %>
+		<% if File.exists?(template) %>
+			<!-- Begin plugin layout -->
+			<%= render :file => template %>
+			<!-- End plugin layout -->
+		<% end %>
+	<% end %>
+
+	<%= render partial: 'shared/skipnav' %>
+	<%= render partial: 'shared/header' %>
+
+	<!-- Begin plugin layout -->
+	<% if !AppConfig[:hide_from_simple_search].include?(controller_name) %>
+		<div class="container-fluid no-pad full-bleed full-bleed--limestone-light">
+		<%= render partial: 'shared/simple_search', locals: {
+			:search_url => "/search",
+			:title => t('archive._plural'),
+			:field_options => [
+			["#{t('search_results.filter.fullrecord')}",''],
+			["#{t('search_results.filter.title')}",'title'],
+			["#{t('search_results.filter.creators')}",'creators_text'],
+			["#{t('search_results.filter.subjects')}",'subjects_text'],
+			["#{t('search_results.filter.notes')}", 'notes'],
+			["#{t('search_results.filter.identifier')}", 'four_part_id']
+			]
+		} %>
+		</div>
+	<% end %>
+	<!-- End plugin layout -->
+
+	<section id="content" class="container-fluid mt-2 pt-2 flex-grow-1">
+		<a name="maincontent" id="maincontent"></a>
+		<%= flash_messages %>
+		<%= yield %>
+	</section>
+
+	<%= render partial: 'shared/footer' %>
+
+	<% if AppConfig[:pui_enable_staff_link] %>
+		<% if AppConfig.has_key?(:frontend_proxy_url) && defined?(@result) && @result.respond_to?(:uri) %>
+			<script>
+				FRONTEND_URL = "<%= j(AppConfig[:frontend_proxy_url]) %>";
+				RECORD_URI = "<%= j(@result.uri) %>";
+				STAFF_LINK_MODE = "<%= j(AppConfig[:pui_staff_link_mode]) %>";
+			</script>
+		<% end %>
+	<% end %>
+
+</body>
+</html>

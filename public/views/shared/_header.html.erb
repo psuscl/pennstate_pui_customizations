@@ -1,77 +1,122 @@
+<!-- display announcement, if we have one -->
 <% if AppConfig[:display_announcement] %>
-  <section id="announcement" class="announcement container-fluid bg-warning">
-    <div class="row align-items-center">
-      <div class="col-xs-12">
-        <p class="text-center text-announcement">
-          <i class="fa fa-bullhorn"></i> <%= t('brand.announcement').html_safe %>
-        </p>
+  <%= render partial: 'shared/announcement' %>
+<% end %>
+
+  <%# <div class="dialog-off-canvas-main-canvas d-flex flex-column h-100" data-off-canvas-main-canvas> %>
+    <!-- Header Include -->
+    <header>
+
+      <nav class="navbar navbar-expand-lg text-light">
+        <div class="container-fluid">
+          <div class="header--nav-branding d-flex w-100">
+            <div class="region region-nav-branding">
+
+              <div data-component-id="psulib_base:header_mark" class="header-mark navbar-brand">
+
+                <a href="https://libraries.psu.edu" title="<%= AppConfig[:pui_branding_img_alt_text] %>" rel="home" class="site-logo d-block">
+                  <img src="https://assets.libraries.psu.edu/psulib_base/dist/peripheral/logo.png" alt="<%= AppConfig[:pui_branding_img_alt_text] %>" fetchpriority="high" height="60" width="228" />
+                </a>
+                <div class="header-mark--name-slogan">
+                  <a href="<%= AppConfig[:public_proxy_url] %>" title="Home" rel="home" class="site-title">
+                    <%= t('brand.header_title') %>
+                  </a>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="header--nav-additional flex-fill collapse navbar-collapse justify-content-md-end"
+              id="navbarSupportedContent">
+              <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
+                <% if File.exists?(template) %>
+                  <!-- Begin plugin layout -->
+                  <%= render :inline => File.read(template) %>
+                  <!-- End plugin layout -->
+                <% end %>
+              <% end %>
+            </div>
+
+            <div class="header--nav-search ms-auto">
+              <% unless AppConfig[:pui_hide][:search_tab] %>
+                <a class="btn btn-outline-light border-0 py-1 px-2" href="<%=  app_prefix('/search?reset=true') %>" title="<%= I18n.t('search_tab', :target => t('archive._plural'))%>">
+                  <i class="bi bi-search" aria-hidden="true"></i>
+                  <span class="sr-only"><%= I18n.t('search_tab', :target => t('archive._plural')) %></span>
+                </a>
+              <% end %>
+              <%= render partial: 'shared/mobile_navigation' %>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="container-fluid nav-main-menu-container">
+          <div class="d-flex w-100 header-bottom">
+            <div class="d-none d-md-block">
+              <div class="region region-nav-main">
+                <%= render partial: 'shared/navigation' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <div class="offcanvas offcanvas-end offcanvas__main" tabindex="-1" id="offcanvasMain">
+      <div class="offcanvas-header">
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+
+        <div class="region region-nav-offcanvas">
+          <nav role="navigation" aria-labelledby="block-alumni-mainnavigation-2-menu" id="block-alumni-mainnavigation-2"
+            class="block block-menu navigation menu--main">
+
+            <div class="visually-hidden block-menu--title block-menu--title--main">Main navigation</div>
+
+            <div class="sidebar-menu sidebar-menu--main">
+              <ul data-block="nav_offcanvas" data-component-id="psulib_base:sidebar_menu"
+                class="navbar-nav justify-content-end flex-wrap main-menu sidebar-menu-parent nav-level-0">
+
+
+                <li class="nav-item menu-level-0">
+                  <a href="https://libraries.psu.edu/services" class="nav-link">Services</a>
+                </li>
+
+                <li class="nav-item menu-level-0">
+                  <a href="https://libraries.psu.edu/research" class="nav-link">Research</a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="https://libraries.psu.edu/about" class="nav-link">About</a>
+                </li>
+
+                <li class="nav-item">
+                  <a href="https://libraries.psu.edu/ask" class="nav-link">Ask</a>
+                </li>
+                <li>
+                  <hr />
+                </li>
+
+                <li class="nav-item">
+                  <a href="https://myaccount.libraries.psu.edu/" class="nav-link">Renew Materials</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://secure.ddar.psu.edu/s/1218/2014/index.aspx?sid=1218&amp;gid=1&amp;pgid=658&amp;cid=2321&amp;dids=27&amp;bledit=1"
+                    class="nav-link">Give Today</a>
+                </li>
+                <li class="nav-item">
+                  <a href="https://myaccount.libraries.psu.edu" class="nav-link">My Account</a>
+                </li>
+
+              </ul>
+
+            </div>
+
+          </nav>
+
+        </div>
       </div>
     </div>
-  </section>
-<% end %>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark" id="header">
-  <div class="container-fluid">
-    <div class="navbar-brand col-xs-12">
-      <div class="skipnav">
-        <a href="#maincontent" class="sr-only sr-only-focusable">Skip to Main Content</a>
-      </div>
-      <a title="The Pennsylvania State University Libraries" href="https://libraries.psu.edu">
-        <img class="img-fluid" alt="Penn State University Libraries logo" src="<%= asset_url(AppConfig[:pui_branding_img]) %>" />
-      </a>
-      <a class="site-title" href="/">
-        <%= t('brand.header_title') %>
-      </a>
-    </div>
-    <ul class="navbar-nav nav">
-      <li class="dropdown nav-item">
-        <a class="dropdown-toggle submenu nav-link" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" tabindex="0">
-          <span>Browse</span>
-          <i class="fa fa-caret-down fa-icon"></i>
-        </a>
-        <ul class="dropdown-menu">
-          <% $MAIN_MENU.each do |link| %>
-            <li class="nav-item">
-              <a class="nav-link" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
-            </li>
-          <% end %>
-        </ul>
-      </li>
-      <% if AppConfig[:plugins].include?('request_list') %>
-        <li class="nav-item">
-          <a class="nav-link" id="request_list_menu_item" href="/plugin/request_list/pennstate"><%= t('plugin.request_list.menu_label') %>
-            <span class="badge" id="rl-badge-count"></span>
-          </a>
-        </li>
-      <% end %>
-      <li class="nav-item">
-        <a class="nav-link" href="https://aeon.libraries.psu.edu">My Account</a>
-      </li>
-      <% unless AppConfig[:pui_hide][:search_tab] %>
-        <li class="nav-item">
-          <a class="nav-link" href="<%=  app_prefix('/search?reset=true') %>" title="<%= I18n.t('search_tab', :target => t('archive._plural'))%>">
-            <span class="fa fa-search" aria-hidden="true"></span>
-            <span class="sr-only"><%= I18n.t('search_tab', :target => t('archive._plural')) %></span>
-          </a>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-</nav>
-<% if !AppConfig[:hide_from_simple_search].include?(controller_name) %>
-  <section id="simple_search" class="navbar-search navbar navbar-expand-md navbar-light bg-light">
-    <div class="container-fluid">
-      <%= render partial: 'shared/simple_search', locals: {
-        :search_url => "/search",
-        :title => t('archive._plural'),
-        :field_options => [
-              ["#{t('search_results.filter.fullrecord')}",''],
-              ["#{t('search_results.filter.title')}",'title'],
-              ["#{t('search_results.filter.creators')}",'creators_text'],
-              ["#{t('search_results.filter.subjects')}",'subjects_text'],
-              ["#{t('search_results.filter.notes')}", 'notes'],
-              ["#{t('search_results.filter.identifier')}", 'four_part_id']
-             ]
-      } %>
-    </div>
-  </section>
-<% end %>
+    <!-- End HeaderInclude -->

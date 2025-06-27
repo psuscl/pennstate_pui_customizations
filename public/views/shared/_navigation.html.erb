@@ -1,0 +1,14 @@
+<section id="navigation">
+  <nav class="block block-menu navigation menu--main" aria-label="<%= I18n.t("navigation.top_level") %>">
+      <div class="header-nav">
+        <ul class="main-menu navbar-nav justify-content-end flex-wrap main-menu main-menu-nav nav-level-0">
+          <%# TODO: add class="active" if we're on that page %>
+          <% $MAIN_MENU.each do |link| %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+  </nav>
+</section>

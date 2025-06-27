@@ -1,15 +1,12 @@
-<!-- not sure if this is worth having on while our welcome text is all in English -->
 <%#= render partial: 'shared/language_select' %>
 
 <div class="row">
-  <div class="col-xs-12 welcome-text">
-    <h1><%= t('brand.welcome_head') %></h1>
-    <div><%= t('brand.welcome_message').html_safe %></div>
+  <div class="col-sm-12">
+    <h1><%= t('brand.welcome_head') %></h2>
+    <div> <%= t('brand.welcome_message').html_safe %> </div>
   </div>
 </div>
 
-<!-- our search interface appears in the navbar -->
-
 <% ASUtils.find_local_directories('public/views/_welcome_addition.html.erb').each do |template| %>
-  <%= render(:file => template) if File.exists?(template) %>
+  <%= render(:inline => File.read(template)) if File.exists?(template) %>
 <% end %>

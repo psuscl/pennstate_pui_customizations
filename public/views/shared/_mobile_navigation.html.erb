@@ -1,0 +1,31 @@
+<div class="dropdown d-block d-lg-none">
+  <nav class="block block-menu navigation menu--main" aria-label="<%= I18n.t("navigation.top_level") %>">
+    <button class="collapsed btn btn-outline-light border-0 py-1 px-2" type="button" id="dropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+      <i class="bi bi-list"></i>
+      <span class="sr-only">Open Menu</span>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu">
+    <%# TODO: add class="active" if we're on that page %>
+      <% $MAIN_MENU.each do |link| %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
+        </li>
+      <% end %>
+      <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
+        <% if File.exists?(template) %>
+          <li role="separator" class=""><hr></li>
+
+          <li class="nav-item">
+            <a class="nav-link" id="request_list_menu_item_2" href="/plugin/request_list/pennstate">
+              <%= t('plugin.request_list.menu_label') %>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="https://aeon.libraries.psu.edu">My Account</a>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+

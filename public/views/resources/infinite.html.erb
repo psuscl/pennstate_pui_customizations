@@ -1,13 +1,40 @@
 <a name="main" title="<%= t('internal_links.main') %>"></a>
 
+<%= javascript_include_tag "#{@base_url}/assets/large_tree_replacement.js" %>
 <%= javascript_include_tag 'tree_renderer' %>
 
-<div id="main-content" class="row">
-  <div id="sidebar" class="resources-sidebar col-xs-12 col-sm-4">
-    <%= render partial: 'resources/sidebar', locals: {:result => @result, :props => {:full => true, :sidebar_tree => false}} %>
-  </div>
+<div class="row flex-column flex-lg-row" id="main-content">
+  <div id="sidebar" class="sidebar sidebar-container col-12 col-lg-4 infinite-tree-sidebar">  
+    <div class="p-3 bg-light">
+      <div class="sidebar-title">
+        <%= render partial: 'shared/sidebar_info', locals: {:result => @result, :props => {:full => true}} %>
+        <h1>
+          <a href="<%= app_prefix(resource_base_url(@result)) %>"><%= @result.parse_full_title(true).html_safe %></a>
+        <h1>
+      </div>
 
-  <div class="resources-content col-xs-12 col-sm-8">
+      <h3 class="record-type-badge <%= @result.primary_type %>">
+        <i class="<%= icon_for_type(@result.primary_type) %>"></i>&#160;<%= t("#{@result.primary_type}._singular") %> <% if @result.container_summary_for_badge %> &mdash; <%= @result.container_summary_for_badge %><% end %>
+      </h3>
+
+      <div class="page_actions col-12 col-lg-6">
+        <%= render partial: 'shared/page_actions', locals: {:record => @result, :title =>  @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
+      </div>
+    </div>
+
+    <% if defined?(@filters) && defined?(@search) %>
+      <%= render partial: 'shared/facets' %>
+    <% end %>
+
+    <div class="p-2">
+      <% if AppConfig[:pui_search_collection_from_collection_organization] %>
+        <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => t('actions.search_in', :type => t('resource._singular'))} %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-12 col-lg-8 px-3">
+    <%= render partial: 'resources/resource_alltabs' %>
+
     <h2><%= t('actions.hierarch') %></h2>
     <p class="resources-infinite-text"><%= t('messages.infinite_text') %></p>
     <div class="infinite-tree-view largetree-container" id="resource-tree-container"></div>
@@ -19,16 +46,16 @@
   var base_url = "<%= url_for(:action => :show) %>";
   var should_link_to_record = true;
 
-  let infiniteScrollOverride = new SimpleRenderer(should_link_to_record);
-  infiniteScrollOverride.nodeTemplate = $('<div class="table-row"> ' +
-                            '  <div class="table-cell title"><button class="expandme" aria-expanded="false" style="float: left;"><i class="expandme-icon glyphicon glyphicon-chevron-right" /></button></div>' +
+  let simpleRendererOverride = new SimpleRenderer(should_link_to_record);
+  simpleRendererOverride.nodeTemplate = $('<div class="table-row"> ' +
+                            '  <div class="table-cell title"><button class="expandme" aria-expanded="false"><i class="expandme-icon fa fa-chevron-right" /></button></div>' +
                             '</div>');
   
   var tree = new LargeTreeReplacement(new TreeDataSource(root_uri + '/tree'),
     $('#resource-tree-container'),
     root_uri,
     true,
-    infiniteScrollOverride,
+    simpleRendererOverride,
     function() {
       var tree_id = TreeIds.uri_to_tree_id('<%= @result.uri %>');
     }

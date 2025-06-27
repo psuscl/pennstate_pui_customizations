@@ -23,10 +23,10 @@
   <% else %>
 
   <% unless defined?(@no_statement) %>
-    <div class="searchstatement">
+    <div class="searchstatement bg-light px-3 py-2 shadow-sm border mb-3">
       <div class="btn btn-group pull-right">
-        <%= link_to I18n.t('actions.new_search'), (defined?(@new_search) ? @new_search : root_path), :class => "btn btn-sm btn-default" %>
-        <button class="btn btn-sm btn-default" id="toggleRefineSearch" aria-expanded="false" aria-controls="refineSearchPanel"><%= I18n.t('actions.refine_search') %></button>
+        <%= link_to I18n.t('actions.new_search'), (defined?(@new_search) ? @new_search : root_path), :class => "btn btn-sm btn-primary" %>
+        <button class="btn btn-sm btn-primary" id="toggleRefineSearch" aria-expanded="false" aria-controls="refineSearchPanel"><%= I18n.t('actions.refine_search') %></button>
       </div>
 
       <% if defined?(@search) %>
