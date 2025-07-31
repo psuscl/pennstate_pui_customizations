@@ -1,0 +1,75 @@
+<div
+  id="request-tree-container"
+></div>
+
+<%# See also RequestRecords.js %>
+
+<dialog id="records-loading-dialog" class="loading-dialog">
+  <div class="spinner-border" role="status">
+    <span class="visually-hidden"><%= t('resource.load_records.loading') %></span>
+  </div>
+</dialog>
+
+<template id="request-tree-record-template">
+  <div
+    class="request-tree-record"
+    id
+    data-uri
+    data-record-number
+    data-observe
+  ></div>
+</template>
+
+<%# The <template>s below get appended to #request-tree-container via InfiniteTree.js %>
+
+<template id="request-tree-root-template">
+  <ol class="request-tree" role="tree">
+    <li class="root node" role="treeitem" id data-uri aria-expanded>
+      <div class="node-row root-node">
+        <div class="node-body" title>
+          <div class="node-title-container">
+            <a class="node-title"></a>
+          </div>
+        </div>
+      </div>
+      <%# ol.node-children to be inserted here by JS %>
+    </li>
+  </ol>
+</template>
+
+<template id="request-tree-node-template">
+  <li class="node" role="treeitem" id data-uri>
+    <div class="node-row">
+      <div class="node-body" title>
+        <div class="node-indentation"></div>
+        <div class="node-title-container">
+          <a class="node-title" href></a>
+        </div>
+      </div>
+    </div>
+    <%# ol.node-children to be inserted here by JS on expand %>
+  </li>
+</template>
+
+<template id="request-tree-expand-button-template">
+  <button class="node-expand" type="button">
+    <i class="node-expand-icon fa fa-chevron-right"></i>
+    <span class="sr-only"></span>
+  </button>
+</template>
+
+<template id="request-tree-children-list-template">
+  <ol
+    class="node-children"
+    role="group"
+    data-parent-id
+    data-tree-level
+    data-total-child-batches
+  >
+    <%# Child nodes will be inserted here by JS %>
+  </ol>
+</template>
+
+<template id="request-tree-batch-placeholder-template">
+  <li data-batch-placeholder style="display:none"></li>
+</template>
