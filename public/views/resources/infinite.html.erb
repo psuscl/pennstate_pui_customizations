@@ -1,17 +1,19 @@
 <a name="main" title="<%= t('internal_links.main') %>"></a>
 
-<%= javascript_include_tag "#{@base_url}/assets/RequestTree.js" %>
-
-<% tree_waypoint_size = 100 %>
+<%
+  tree_waypoint_size = Rails.configuration.infinite_tree_waypoint_size
+  records_waypoint_size = Rails.configuration.infinite_records_waypoint_size
+  num_records = @ordered_records.count
+%>
 
 <div class="row flex-column flex-lg-row" id="main-content">
-  <div id="sidebar" class="sidebar sidebar-container col-12 col-lg-4 infinite-tree-sidebar">  
+  <div id="sidebar" class="h-max p-0 col-12 col-lg-4 sidebar sidebar-container infinite-tree-sidebar">  
     <div class="p-3 bg-light">
       <div class="sidebar-title">
         <%= render partial: 'shared/sidebar_info', locals: {:result => @result, :props => {:full => true}} %>
         <h1>
           <a href="<%= app_prefix(resource_base_url(@result)) %>"><%= @result.parse_full_title(true).html_safe %></a>
-        <h1>
+        </h1>
       </div>
 
       <h3 class="record-type-badge <%= @result.primary_type %>">
@@ -23,6 +25,8 @@
       </div>
     </div>
 
+    <hr>
+
     <% if defined?(@filters) && defined?(@search) %>
       <%= render partial: 'shared/facets' %>
     <% end %>
@@ -32,15 +36,25 @@
         <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => t('actions.search_in', :type => t('resource._singular'))} %>
       <% end %>
     </div>
+
+    <%= render partial: 'shared/infinite_tree' %>
   </div>
   <div class="col-12 col-lg-8 px-3">
     <%= render partial: 'resources/resource_alltabs' %>
 
     <h2><%= t('actions.hierarch') %></h2>
     <p class="resources-infinite-text"><%= t('messages.infinite_text') %></p>
-    <%= render partial: 'resources/request_tree' %>
+
+    <div class="infinite-records">
+      <%= render partial: 'resources/infinite_records', locals: {
+        num_records: num_records,
+        records_waypoint_size: records_waypoint_size
+      } %>
+    </div>
   </div>
 </div>
+
+<%= render partial: 'resources/infinite_load_all', locals: {num_records: num_records} %>
 
 <script>
 const resourceUri = '<%= @result["uri"] %>';
@@ -48,34 +62,41 @@ const treeWaypointSize = '<%= tree_waypoint_size %>';
 const identifier_separator = '<%= I18n.t("resource.identifier_separator") %>';
 const date_type_bulk = '<%= I18n.t("date_type_bulk.bulk") %>';
 const appUrlPrefix = '<%= AppConfig[:public_proxy_url] %>';
+const workerPath = '<%= asset_path('infiniteRecordsWorker.js') %>';
+const mainMaxFetches = <%= Rails.configuration.infinite_records_main_max_concurrent_waypoint_fetches %>;
+const workerMaxFetches = <%= Rails.configuration.infinite_records_worker_max_concurrent_waypoint_fetches %>;
 
-const requestTree = new RequestTree(
+const infiniteRecords = new InfiniteRecords(
+  resourceUri,
+  appUrlPrefix,
+  workerPath,
+  mainMaxFetches,
+  workerMaxFetches,
+);
+const infiniteTree = new InfiniteTree(
   treeWaypointSize,
   appUrlPrefix,
   resourceUri,
   identifier_separator,
-  date_type_bulk
+  date_type_bulk,
 );
 
-requestTree.container.addEventListener('click', (e) => {
-  treeClickDelegator(e, requestTree);
+infiniteTree.container.addEventListener('click', (e) => {
+  treeClickDelegator(e, infiniteTree, infiniteRecords);
 });
 
 /**
  * treeClickDelegator
- * @description - Delegate click events on the RequestTree container
+ * @description - Delegate click events on the InfiniteTree container
  * @param {Event} event - Click event
- * @param {RequestTree} tree - RequestTree instance
+ * @param {InfiniteTree} tree - InfiniteTree instance
+ * @param {InfiniteRecords} records - InfiniteRecords instance
  */
-function treeClickDelegator(event, tree) {
-  if (
-    !event.target.classList.contains('node-expand') &&
-    !event.target.classList.contains('node-expand-icon') &&
-    !event.target.classList.contains('node-title')
-  ) return;
-
-  if (event.target.className.includes('node-expand')) {
+function treeClickDelegator(event, tree, records) {
+  if (event.target.closest('.node-expand')) {
     tree.expandHandler(event);
+  } else if (event.target.closest('.node-title')) {
+    records.treeLinkHandler(event);
   }
 }
 </script>

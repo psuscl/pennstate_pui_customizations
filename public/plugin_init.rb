@@ -1,5 +1,5 @@
 # enable/disable Matomo analytics
-AppConfig[:matomo_enabled] = false
+AppConfig[:matomo_enabled] = true
 
 # display announcement
 AppConfig[:display_announcement] = true
