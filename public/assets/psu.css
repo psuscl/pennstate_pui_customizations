@@ -89,6 +89,7 @@ span.component {
 
 /* tree styles */
 
+#infinite-tree-container,
 #request-tree-container {
   background-color: #fff;
   border: none;
