@@ -2,7 +2,7 @@
 AppConfig[:matomo_enabled] = true
 
 # display announcement
-AppConfig[:display_announcement] = true
+AppConfig[:display_announcement] = false
 
 # branding image and favicon
 AppConfig[:pui_branding_img] = 'assets/pennstate.png'
