@@ -90,7 +90,8 @@ span.component {
 /* tree styles */
 
 #infinite-tree-container,
-#request-tree-container {
+#request-tree-container,
+.largetree-container {
   background-color: #fff;
   border: none;
 }
@@ -101,13 +102,15 @@ span.component {
   list-style: none;
 }
 
+/* override PSU theming */
+.table > :not(caption) > * > * { padding: 0; }
+
 /* root node color and text decoration (will perma-fix later) */
 .root-node .node-title,
 .root-node .node-title:hover { color: var(--bs-body-color); }
 .root-node .node-title:hover { text-decoration: none; }
 
 .largetree-container .table { border-spacing: 1rem; }
-.largetree-container .table.root div.table-row:first-child div.title { padding-left: 0; }
 
 .largetree-container .table.root div.table-row:first-child,
 .root.node > .node-row > .node-body {
