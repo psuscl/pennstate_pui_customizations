@@ -30,8 +30,6 @@ span.component {
   -webkit-appearance: auto;
 }
 
-.btn { margin: 0; }
-
 /* Apply primary styles to default buttons */
 .btn-default {
   --bs-btn-bg: #005fa9;
@@ -85,6 +83,13 @@ span.component {
 .rl-navbar .nav-item .nav-link:hover,
 .rl-navbar .nav-item .nav-link:active {
   color: #cce9ff;
+}
+
+/* button customization for sidebar (override PSUL defaults */
+.badge.resource i.fa { padding: 0.25rem; }
+.badge.resource .btn {
+  margin-left: inherit;
+  margin-right: inherit;
 }
 
 /* tree styles */

@@ -12,6 +12,12 @@ AppConfig[:pui_show_favicon] = true
 # controller types to hide from simple search
 AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'objects', 'subjects', 'agents', 'classifications']
 
+# add View Catalog Action button
+AppConfig[:pui_page_custom_actions] << {
+  'record_type' => ['resource'],
+  'erb_partial' => 'shared/view_catalog_action',
+}
+
 # make sure EAD Location appears in resource records
 Rails.application.config.after_initialize do
   class Resource
