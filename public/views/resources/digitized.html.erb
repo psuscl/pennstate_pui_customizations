@@ -10,9 +10,9 @@
         </h1>
       </div>
 
-      <h3 class="record-type-badge <%= @result.primary_type %>">
+      <div class="record-type-badge <%= @result.primary_type %>">
         <i class="<%= icon_for_type(@result.primary_type) %>"></i>&#160;<%= t("#{@result.primary_type}._singular") %> <% if @result.container_summary_for_badge %> &mdash; <%= @result.container_summary_for_badge %><% end %>
-      </h3>
+      </div>
 
       <div class="page_actions">
         <%= render partial: 'shared/page_actions', locals: {:record => @result, :title => @result.display_string, :url => request.fullpath, :cite => @result.cite } %>
@@ -22,8 +22,6 @@
     <% if defined?(@filters) && defined?(@search) %>
       <%= render partial: 'shared/facets' %>
     <% end %>
-
-    <hr>
 
     <div class="p-2">
       <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => "#{t('actions.search_in', :type => t('resource._singular'))}"} %>
