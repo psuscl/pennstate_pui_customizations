@@ -6,7 +6,7 @@ en:
     welcome_head: Penn State University Libraries Archival Collections
     welcome_message: ""
     announcement: >
-      📢 Our request management system will be down for maintenance on Wednesday, September 3 from 9:00pm-1:00am EDT. 📢
+      📢 This is Penn State's ArchivesSpace testing site. Some things might be broken! 📢
   actions:
     hierarch: Request Materials
     print: Print PDF
