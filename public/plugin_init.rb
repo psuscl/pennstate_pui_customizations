@@ -1,8 +1,8 @@
 # enable/disable Matomo analytics
-AppConfig[:matomo_enabled] = true
+AppConfig[:matomo_enabled] = false
 
 # display announcement
-AppConfig[:display_announcement] = false
+AppConfig[:display_announcement] = true
 
 # branding image and favicon
 AppConfig[:pui_branding_img] = 'assets/pennstate.png'
