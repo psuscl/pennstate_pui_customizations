@@ -30,8 +30,6 @@ span.component {
   -webkit-appearance: auto;
 }
 
-.btn { margin: 0; }
-
 /* Apply primary styles to default buttons */
 .btn-default {
   --bs-btn-bg: #005fa9;
@@ -87,15 +85,36 @@ span.component {
   color: #cce9ff;
 }
 
-/* tree styles */
-.largetree-container { background-color: #fff; }
-.largetree-container .table { border-spacing: 1rem; }
-.largetree-container .table.root div.table-row:first-child div.title { padding-left: 0; }
+/* button customization for sidebar (override PSUL defaults) */
+.badge.resource i.fa { padding: 0.25rem; }
+.badge.resource .btn {
+  margin-left: inherit;
+  margin-right: inherit;
+}
 
-#infinite-tree-container {
+/* tree styles */
+#infinite-tree-container,
+#request-tree-container,
+.largetree-container { 
   background-color: #fff;
   border: none;
 }
+
+.request-tree {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* override PSU theming */
+.table > :not(caption) > * > * { padding: 0; }
+
+/* root node color and text decoration (will perma-fix later) */
+.root-node .node-title,
+.root-node .node-title:hover { color: var(--bs-body-color); }
+.root-node .node-title:hover { text-decoration: none; }
+
+.largetree-container .table { border-spacing: 1rem; }
 
 .largetree-container .table.root div.table-row:first-child,
 .root.node > .node-row > .node-body {
