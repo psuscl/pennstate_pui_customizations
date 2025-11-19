@@ -6,7 +6,7 @@ en:
     welcome_head: Penn State University Libraries Archival Collections
     welcome_message: ""
     announcement: >
-      📢 This is Penn State's ArchivesSpace testing site. Some things might be broken!
+      📢 This is Penn State's ArchivesSpace testing site. Some things might be broken! 📢
   actions:
     hierarch: Request Materials
     print: Print PDF
@@ -20,6 +20,7 @@ en:
       You may review the contents of the collection here. When you see an item or items that you would like to consult in the reading room, click on the 'Request This' button to add them to your My Requests cart above. When you are finished, click on "My Requests" to review and submit your requests for the Research Services team to review.
     inventory_text: >
       Below is a list of containers found in this collection. You may click on any of them in order to learn more about their contents and how to request the material.
+    email_repository: E-mail This Repository
   sidebar_menu_items:
     comp_id: Collection ID
     ark_url: ARK

@@ -1,10 +1,12 @@
 <% results_type = (defined?(@results_type) ? @results_type : t('search_results.results')) %>
 <div class="row">
   <div class="col-sm-12">
-     <%= render partial: 'shared/breadcrumbs' %>
-  <% if defined?(@search_title) %>
-  <h2><%= @search_title %></h2>
-  <% end %>
+    <%= render partial: 'shared/breadcrumbs' %>
+    <% if defined?(@search_title) %>
+      <h1><%= @search_title %></h1>
+    <% else %>
+      <h1 class="visually-hidden"><%= @page_title %></h1>
+    <% end %>
 
   <% if defined?(@reset) && @reset %>
       <%= render partial: 'shared/search', locals: {:search_url => @base_search,

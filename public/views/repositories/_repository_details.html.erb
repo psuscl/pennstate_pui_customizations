@@ -1,0 +1,9 @@
+<h3><%= t('repository.details') %></h3>
+
+<% if @repo_info['top']['url'].present? %>
+  <p><%= t('repository.part') %> <a href="<%= @repo_info['top']['url'] %>"> <%= @repo_info['top']['name'] %></a> <%= t('repository._singular') %></p>
+<% else %>
+  <p><%= "#{t('repository.part')} #{@repo_info['top']['name']} #{t('repository._singular')}" %></p>
+<% end %>
+
+<%= render partial: 'repositories/full_repo', locals: {:info => @repo_info, :url => @repo_info['top']['url']} %>
