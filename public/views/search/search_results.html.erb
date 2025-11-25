@@ -5,54 +5,55 @@
     <% if defined?(@search_title) %>
       <h1><%= @search_title %></h1>
     <% else %>
-      <h1 class="visually-hidden"><%= @page_title %></h1>
+      <% unless @reset %>
+        <h1 class="visually-hidden"><%= @page_title %></h1>
+      <% end %>
     <% end %>
 
-  <% if defined?(@reset) && @reset %>
+    <% if defined?(@reset) && @reset %>
       <%= render partial: 'shared/search', locals: {:search_url => @base_search,
                                                     :title => t('archive._plural'),
                                                     :limit_options => [["#{t('actions.search')} #{t('search-limits.all')}",''],
-                                                                       [t('search-limit', :limit => t('search-limits.resources')),'resource'],
-                                                                       [t('search-limit', :limit => t('search-limits.digital')),'digital_object']],
+                                                                      [t('search-limit', :limit => t('search-limits.resources')),'resource'],
+                                                                      [t('search-limit', :limit => t('search-limits.digital')),'digital_object']],
                                                     :field_options => [["#{t('search_results.filter.fullrecord')}",''],
-                                                                       ["#{t('search_results.filter.title')}",'title'],
-                                                                       ["#{t('search_results.filter.creators')}",'creators_text'],
-                                                                       ["#{t('search_results.filter.subjects')}",'subjects_text'],
-                                                                       ["#{t('search_results.filter.notes')}", 'notes'],
-                                                                       ["#{t('search_results.filter.identifier')}", 'identifier'] ],
-                                                    :header_size => '2',
+                                                                      ["#{t('search_results.filter.title')}",'title'],
+                                                                      ["#{t('search_results.filter.creators')}",'creators_text'],
+                                                                      ["#{t('search_results.filter.subjects')}",'subjects_text'],
+                                                                      ["#{t('search_results.filter.notes')}", 'notes'],
+                                                                      ["#{t('search_results.filter.identifier')}", 'identifier'] ],
+                                                    :header_size => '1',
                                                     :show_header => true } %>
-  <% else %>
+    <% else %>
 
-  <% unless defined?(@no_statement) %>
-    <div class="searchstatement bg-light px-3 py-2 shadow-sm border mb-3">
-      <div class="btn btn-group pull-right">
-        <%= link_to I18n.t('actions.new_search'), (defined?(@new_search) ? @new_search : root_path), :class => "btn btn-sm btn-primary" %>
-        <button class="btn btn-sm btn-primary" id="toggleRefineSearch" aria-expanded="false" aria-controls="refineSearchPanel"><%= I18n.t('actions.refine_search') %></button>
-      </div>
-
-      <% if defined?(@search) %>
-        <%= @search[:search_statement].html_safe %>
+      <% unless defined?(@no_statement) %>
+        <div class="row searchstatement bg-light px-3 py-2 shadow-sm border mb-3">
+          <div class="col">
+            <% if defined?(@search) %>
+              <%= @search[:search_statement].html_safe %>
+            <% end %>            
+          </div>
+          <div class="btn btn-group col-sm-auto">
+            <%= link_to I18n.t('actions.new_search'), (defined?(@new_search) ? @new_search : root_path), :class => "btn btn-sm btn-primary" %>
+            <button class="btn btn-sm btn-primary" id="toggleRefineSearch" aria-expanded="false" aria-controls="refineSearchPanel"><%= I18n.t('actions.refine_search') %></button>
+          </div>
+          <div id="refineSearchPanel" class="container refinesearch" aria-hidden="true" style="display:none;">
+            <%= render partial: 'shared/search', locals: {:search_url => @base_search,
+                                                          :title => t('archive._plural'),
+                                                          :limit_options => [["#{t('actions.search')} #{t('search-limits.all')}",''],
+                                                                            [t('search-limit', :limit => t('search-limits.resources')),'resource'],
+                                                                            [t('search-limit', :limit => t('search-limits.digital')),'digital_object']],
+                                                          :field_options => [["#{t('search_results.filter.fullrecord')}",''],
+                                                                            ["#{t('search_results.filter.title')}",'title'],
+                                                                            ["#{t('search_results.filter.creators')}",'creators_text'],
+                                                                            ["#{t('search_results.filter.subjects')}",'subjects_text'],
+                                                                            ["#{t('search_results.filter.notes')}", 'notes'],
+                                                                            ["#{t('search_results.filter.identifier')}", 'identifier'] ],
+                                                          :show_header => false } %>
+          </div>
+        </div>
       <% end %>
-
-      <div id="refineSearchPanel" class="container refinesearch" aria-hidden="true" style="display:none;">
-        <%= render partial: 'shared/search', locals: {:search_url => @base_search,
-                                                      :title => t('archive._plural'),
-                                                      :limit_options => [["#{t('actions.search')} #{t('search-limits.all')}",''],
-                                                                         [t('search-limit', :limit => t('search-limits.resources')),'resource'],
-                                                                         [t('search-limit', :limit => t('search-limits.digital')),'digital_object']],
-                                                      :field_options => [["#{t('search_results.filter.fullrecord')}",''],
-                                                                         ["#{t('search_results.filter.title')}",'title'],
-                                                                         ["#{t('search_results.filter.creators')}",'creators_text'],
-                                                                         ["#{t('search_results.filter.subjects')}",'subjects_text'],
-                                                                         ["#{t('search_results.filter.notes')}", 'notes'],
-                                                                         ["#{t('search_results.filter.identifier')}", 'identifier'] ],
-                                                      :show_header => false } %>
-      </div>
-    </div>
-  <% end %>
-
-  <% end %>
+    <% end %>
   </div>
 </div>
 

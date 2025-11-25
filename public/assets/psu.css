@@ -21,6 +21,11 @@ h1 {
   font-size: 1.25rem;
 }
 
+.h4, h4 {
+  font-family: "PT Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 1rem;
+}
+
 span.component {
   font-weight: 400;
 }
@@ -108,6 +113,9 @@ span.component {
 
 /* override PSU theming */
 .table > :not(caption) > * > * { padding: 0; }
+
+ul.facet-list { padding-left: 0; }
+ul.facet-list > li { list-style-type: none; }
 
 /* root node color and text decoration (will perma-fix later) */
 .root-node .node-title,

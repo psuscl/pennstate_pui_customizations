@@ -28,7 +28,7 @@
       <%= render partial: 'shared/facets' %>
     <% end %>
 
-    <hr>
+    <hr role="separator">
 
     <div class="p-2">
       <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => "#{t('actions.search_in', :type => t('resource._singular'))}"} %>
