@@ -115,7 +115,8 @@ span.component {
 .table > :not(caption) > * > * { padding: 0; }
 
 ul.facet-list { padding-left: 0; }
-ul.facet-list > li { list-style-type: none; }
+ul.facet-list > li,
+.more-facets li { list-style-type: none; }
 
 /* root node color and text decoration (will perma-fix later) */
 .root-node .node-title,
