@@ -30,7 +30,7 @@
     </div>
 
     <% if @result.instance_of?(ArchivalObject) %>
-      <hr>
+      <hr role="separator">
       <% if AppConfig[:pui_search_collection_from_archival_objects] %>
         <div class="p-2">
           <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result.resource_uri, :action_text => "#{t('actions.search_in', :type => t('resource._singular'))}"} %>

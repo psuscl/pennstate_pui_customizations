@@ -1,4 +1,4 @@
-<section id="simple_search" class="d-flex flex-row row pt-2 pb-1 align-items-center bg-light">
+<section id="simple_search" class="d-flex flex-row row pt-2 pb-1 align-items-center bg-light" aria-label="search the archives">
   <div class="col-md-8">
     <% @search = Search.new unless defined?(@search) %>
     <%= form_tag(app_prefix("#{search_url}"), method: 'get', :id => 'simple_search') do %>

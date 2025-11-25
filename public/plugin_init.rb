@@ -10,7 +10,7 @@ AppConfig[:pui_branding_img_alt_text] = 'Penn State University Libraries'
 AppConfig[:pui_show_favicon] = true
 
 # controller types to hide from simple search
-AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'objects', 'subjects', 'agents', 'classifications']
+AppConfig[:hide_from_simple_search] = ['search', 'resources', 'accessions', 'objects', 'subjects', 'agents', 'classifications', 'repositories']
 
 # make sure EAD Location appears in resource records
 Rails.application.config.after_initialize do
