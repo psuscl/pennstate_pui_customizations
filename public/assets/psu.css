@@ -1,3 +1,9 @@
+/* make our color contrasts WCAG AAA-compliant */
+.record-type-badge.digital_object {
+  color: #901824;
+  border-color: #901824;
+}
+
 /* PSU Theme style alterations work with archivesspace */
 body {
   --bs-border-width: 1px;
