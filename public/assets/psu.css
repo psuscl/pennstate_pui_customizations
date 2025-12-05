@@ -1,5 +1,6 @@
 /* make our color contrasts WCAG AAA-compliant */
-.record-type-badge.digital_object {
+.record-type-badge.digital_object,
+.record-type-badge.resource {
   color: #901824;
   border-color: #901824;
 }
@@ -7,6 +8,7 @@
 /* PSU Theme style alterations work with archivesspace */
 body {
   --bs-border-width: 1px;
+  --bs-border-color: rgb(124, 142, 162);
 }
 
 h1 {
@@ -25,6 +27,11 @@ h1 {
 .h3, h3,
 .accordion h2.card-title {
   font-size: 1.25rem;
+}
+
+.h4, h4 {
+  font-family: "PT Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  font-size: 1rem;
 }
 
 span.component {
@@ -114,6 +121,10 @@ span.component {
 
 /* override PSU theming */
 .table > :not(caption) > * > * { padding: 0; }
+
+ul.facet-list { padding-left: 0; }
+ul.facet-list > li,
+.more-facets li { list-style-type: none; }
 
 /* root node color and text decoration (will perma-fix later) */
 .root-node .node-title,
