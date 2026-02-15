@@ -1,9 +1,3 @@
-# enable/disable Matomo analytics
-AppConfig[:matomo_enabled] = false
-
-# display announcement
-AppConfig[:display_announcement] = true
-
 # branding image and favicon
 AppConfig[:pui_branding_img] = 'assets/pennstate.png'
 AppConfig[:pui_branding_img_alt_text] = 'Penn State University Libraries'
