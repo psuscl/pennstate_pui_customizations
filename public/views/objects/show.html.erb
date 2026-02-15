@@ -15,13 +15,7 @@
     <div class="p-3 bg-light">
       <div class="sidebar-title">
         <%= render partial: 'shared/sidebar_info', locals: {:result => @result, :props => {:full => true}} %>
-        <h1>
-          <a href="<%= app_prefix(resource_base_url(@result)) %>"><%= @result.parse_full_title(true).html_safe %></a>
-        </h1>
-      </div>
-
-      <div class="record-type-badge <%= @result.primary_type %>">
-        <i class="<%= icon_for_type(@result.primary_type) %>"></i>&#160;<%= t("#{@result.primary_type}._singular") %> <% if @result.container_summary_for_badge %> &mdash; <%= @result.container_summary_for_badge %><% end %>
+        <%= render partial: 'shared/idbadge', locals: {:result => @result, :props => {:heading_level => 1, :show_id => false}} %>
       </div>
 
       <div class="page_actions">
