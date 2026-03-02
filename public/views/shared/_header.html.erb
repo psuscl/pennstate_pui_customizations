@@ -28,13 +28,19 @@
 
         <div class="header--nav-additional flex-fill collapse navbar-collapse justify-content-md-end"
           id="navbarSupportedContent">
-          <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
-            <% if File.exists?(template) %>
-              <!-- Begin plugin layout -->
-              <%= render :inline => File.read(template) %>
-              <!-- End plugin layout -->
+          <ul class="navbar-nav ml-auto flex-row rl-navbar">
+            <%# if a Request List Header partial exists, insert it here %>
+            <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
+              <% if File.exists?(template) %>
+                <!-- Begin plugin layout -->
+                <%= render :inline => File.read(template) %>
+                <!-- End plugin layout -->
+              <% end %>
             <% end %>
-          <% end %>
+            <li class="nav-item p-2">
+              <a class="nav-link" href="https://forms.cloud.microsoft/r/tZSekPfs4q"><%= t('actions.send_feedback') %></a>
+            </li>
+          </ul>
         </div>
 
         <div class="header--nav-search ms-auto">

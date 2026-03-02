@@ -11,20 +11,22 @@
           <a class="nav-link" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
         </li>
       <% end %>
+      <li role="separator" class=""><hr></li>
       <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
         <% if File.exists?(template) %>
-          <li role="separator" class=""><hr></li>
-
           <li class="nav-item">
-            <a class="nav-link" id="request_list_menu_item_2" href="/plugin/request_list/pennstate">
-              <%= t('plugin.request_list.menu_label') %>
+            <a class="nav-link" id="request_list_menu_item" href="/plugin/request_list/pennstate">
+              <%= t('plugin.request_list.requests_link') %>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="https://aeon.libraries.psu.edu">My Account</a>
+            <a class="nav-link" href="https://aeon.libraries.psu.edu"><%= t('plugin.request_list.account_link') %></a>
           </li>
         <% end %>
       <% end %>
+      <li class="nav-item">
+        <a class="nav-link" href="https://forms.cloud.microsoft/r/tZSekPfs4q"><%= t('actions.send_feedback') %></a>
+      </li> 
     </ul>
   </nav>
 </div>

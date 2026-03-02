@@ -10,6 +10,7 @@ en:
   actions:
     hierarch: Request Materials
     print: Print PDF
+    send_feedback: Send Feedback
     view_in_catalog: View In Catalog
   search_results:
     results_head: "<strong>%{start} - %{end}</strong> of <strong>%{total}</strong>"
