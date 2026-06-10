@@ -28,7 +28,8 @@
       <%= render partial: 'shared/search_collection_form', :locals => {:resource_uri => @result['uri'], :action_text => "#{t('actions.search_in', :type => t('resource._singular'))}"} %>
     </div>
     
-    <%= render partial: 'shared/children_tree', :locals => {:heading_text => t('cont_arr'), :root_node_uri => @result.uri, :current_node_uri => @result.uri} %>
+    <h2><%= t('cont_arr') %></h2>
+    <%= render partial: 'shared/children_tree', :locals => {:root_node_uri => @result.uri, :current_node_uri => @result.uri} %>
   </div>
   <div class="col-12 col-lg-8 px-3">
     <%= render partial: 'resources/resource_alltabs' %>
