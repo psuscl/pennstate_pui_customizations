@@ -11,15 +11,15 @@
           <a class="nav-link" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
         </li>
       <% end %>
+      
+      <!-- Begin plugin layout -->
+      <li role="separator" class=""><hr></li>
       <% ASUtils.find_local_directories('public/views/_request_list_mobile_header.html.erb').each do |template| %>
         <% if File.exists?(template) %>
-          <% if File.exists?(template) %>
-            <!-- Begin plugin layout -->
-            <%= render :inline => File.read(template) %>
-            <!-- End plugin layout -->
-          <% end %>
+          <%= render :inline => File.read(template) %>
         <% end %>
       <% end %>
+      <!-- End plugin layout -->
     </ul>
   </nav>
 </div>
