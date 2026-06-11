@@ -6,7 +6,7 @@ en:
     welcome_head: Penn State University Libraries Archival Collections
     welcome_message: ""
     announcement: >
-      📢 This is Penn State's ArchivesSpace testing site. Some things might be broken! 📢
+      📢 The Special Collections Reading Room will be closed from May 11-25 for a shelving upgrade. <a href="/alerts">Learn more.</a>
   actions:
     hierarch: Request Materials
     print: Print PDF

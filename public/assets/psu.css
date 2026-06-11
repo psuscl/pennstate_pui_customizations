@@ -24,6 +24,11 @@ h1 {
   font-size: 1.5rem;
 }
 
+h2.alert-date {
+  color: var(--bs-secondary-color);
+  font-size: 1.25rem;
+}
+
 .h3, h3,
 .accordion h2.card-title {
   font-size: 1.25rem;
@@ -168,6 +173,11 @@ ul.facet-list > li,
 /* tree styles to override some things in peripheral.min.css that don't play nice with ASpace tables */
 .table > .root-row > * > * { color: rgba(var(--bs-link-color-rgb),var(--bs-link-opacity,1)); }
 .table > .current > * > * { background-color: #effaff; }
+
+/* set announcement styles to match sitewide-alert (avoid link contrast errors) */
+.announcement { background-color: #e6f7ff; }
+.announcement a { color: rgb(0, 81, 143); }
+.announcement a:hover { color: rgb(0, 81, 143); }
 
 /* search result styles */
 .recordrow {
