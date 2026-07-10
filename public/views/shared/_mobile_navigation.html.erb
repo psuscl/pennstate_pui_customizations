@@ -11,17 +11,13 @@
           <a class="nav-link" href="<%= app_prefix(link[0]) %>"><%= t(link[1]) %></a>
         </li>
       <% end %>
-      <li role="separator" class=""><hr></li>
-      <% ASUtils.find_local_directories('public/views/_request_list_header.html.erb').each do |template| %>
+      <% ASUtils.find_local_directories('public/views/_request_list_mobile_header.html.erb').each do |template| %>
         <% if File.exists?(template) %>
-          <li class="nav-item">
-            <a class="nav-link" id="request_list_menu_item" href="/plugin/request_list/pennstate">
-              <%= t('plugin.request_list.requests_link') %>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://aeon.libraries.psu.edu"><%= t('plugin.request_list.account_link') %></a>
-          </li>
+          <% if File.exists?(template) %>
+            <!-- Begin plugin layout -->
+            <%= render :inline => File.read(template) %>
+            <!-- End plugin layout -->
+          <% end %>
         <% end %>
       <% end %>
     </ul>
